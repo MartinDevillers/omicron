@@ -1,0 +1,1514 @@
+[{
+        "name": "Bubble Sort",
+        "algorithm": "Bubble Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 10,
+        "actualOperations": 66,
+        "expectedOperationsBest": 10,
+        "expectedOperationsAverage": 100,
+        "expectedOperationsWorst": 100
+    }, {
+        "name": "Counting Sort",
+        "algorithm": "Counting Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 10,
+        "actualOperations": 50,
+        "expectedOperationsBest": 20,
+        "expectedOperationsAverage": 20,
+        "expectedOperationsWorst": 20
+    }, {
+        "name": "Heap Sort",
+        "algorithm": "Heap Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 10,
+        "actualOperations": 35,
+        "expectedOperationsBest": 33.219280948873624,
+        "expectedOperationsAverage": 33.219280948873624,
+        "expectedOperationsWorst": 33.219280948873624
+    }, {
+        "name": "Insertion Sort",
+        "algorithm": "Insertion Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 10,
+        "actualOperations": 22,
+        "expectedOperationsBest": 10,
+        "expectedOperationsAverage": 100,
+        "expectedOperationsWorst": 100
+    }, {
+        "name": "Merge Sort",
+        "algorithm": "Merge Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 10,
+        "actualOperations": 22,
+        "expectedOperationsBest": 33.219280948873624,
+        "expectedOperationsAverage": 33.219280948873624,
+        "expectedOperationsWorst": 33.219280948873624
+    }, {
+        "name": "Quick Sort",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 10,
+        "actualOperations": 40,
+        "expectedOperationsBest": 33.219280948873624,
+        "expectedOperationsAverage": 33.219280948873624,
+        "expectedOperationsWorst": 100
+    }, {
+        "name": "Selection Sort",
+        "algorithm": "Selection Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 10,
+        "actualOperations": 55,
+        "expectedOperationsBest": 100,
+        "expectedOperationsAverage": 100,
+        "expectedOperationsWorst": 100
+    }, {
+        "name": "Tim Sort",
+        "algorithm": "Tim Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 10,
+        "actualOperations": 21,
+        "expectedOperationsBest": 10,
+        "expectedOperationsAverage": 33.219280948873624,
+        "expectedOperationsWorst": 33.219280948873624
+    }, {
+        "name": "Bubble Sort",
+        "algorithm": "Bubble Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 15,
+        "actualOperations": 208,
+        "expectedOperationsBest": 15,
+        "expectedOperationsAverage": 225,
+        "expectedOperationsWorst": 225
+    }, {
+        "name": "Counting Sort",
+        "algorithm": "Counting Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 15,
+        "actualOperations": 75,
+        "expectedOperationsBest": 30,
+        "expectedOperationsAverage": 30,
+        "expectedOperationsWorst": 30
+    }, {
+        "name": "Heap Sort",
+        "algorithm": "Heap Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 15,
+        "actualOperations": 62,
+        "expectedOperationsBest": 58.60335893412778,
+        "expectedOperationsAverage": 58.60335893412778,
+        "expectedOperationsWorst": 58.60335893412778
+    }, {
+        "name": "Insertion Sort",
+        "algorithm": "Insertion Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 15,
+        "actualOperations": 57,
+        "expectedOperationsBest": 15,
+        "expectedOperationsAverage": 225,
+        "expectedOperationsWorst": 225
+    }, {
+        "name": "Merge Sort",
+        "algorithm": "Merge Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 15,
+        "actualOperations": 43,
+        "expectedOperationsBest": 58.60335893412778,
+        "expectedOperationsAverage": 58.60335893412778,
+        "expectedOperationsWorst": 58.60335893412778
+    }, {
+        "name": "Quick Sort",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 15,
+        "actualOperations": 84,
+        "expectedOperationsBest": 58.60335893412778,
+        "expectedOperationsAverage": 58.60335893412778,
+        "expectedOperationsWorst": 225
+    }, {
+        "name": "Selection Sort",
+        "algorithm": "Selection Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 15,
+        "actualOperations": 120,
+        "expectedOperationsBest": 225,
+        "expectedOperationsAverage": 225,
+        "expectedOperationsWorst": 225
+    }, {
+        "name": "Tim Sort",
+        "algorithm": "Tim Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 15,
+        "actualOperations": 41,
+        "expectedOperationsBest": 15,
+        "expectedOperationsAverage": 58.60335893412778,
+        "expectedOperationsWorst": 58.60335893412778
+    }, {
+        "name": "Bubble Sort",
+        "algorithm": "Bubble Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 20,
+        "actualOperations": 231,
+        "expectedOperationsBest": 20,
+        "expectedOperationsAverage": 400,
+        "expectedOperationsWorst": 400
+    }, {
+        "name": "Counting Sort",
+        "algorithm": "Counting Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 20,
+        "actualOperations": 98,
+        "expectedOperationsBest": 40,
+        "expectedOperationsAverage": 40,
+        "expectedOperationsWorst": 40
+    }, {
+        "name": "Heap Sort",
+        "algorithm": "Heap Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 20,
+        "actualOperations": 97,
+        "expectedOperationsBest": 86.43856189774725,
+        "expectedOperationsAverage": 86.43856189774725,
+        "expectedOperationsWorst": 86.43856189774725
+    }, {
+        "name": "Insertion Sort",
+        "algorithm": "Insertion Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 20,
+        "actualOperations": 78,
+        "expectedOperationsBest": 20,
+        "expectedOperationsAverage": 400,
+        "expectedOperationsWorst": 400
+    }, {
+        "name": "Merge Sort",
+        "algorithm": "Merge Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 20,
+        "actualOperations": 60,
+        "expectedOperationsBest": 86.43856189774725,
+        "expectedOperationsAverage": 86.43856189774725,
+        "expectedOperationsWorst": 86.43856189774725
+    }, {
+        "name": "Quick Sort",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 20,
+        "actualOperations": 89,
+        "expectedOperationsBest": 86.43856189774725,
+        "expectedOperationsAverage": 86.43856189774725,
+        "expectedOperationsWorst": 400
+    }, {
+        "name": "Selection Sort",
+        "algorithm": "Selection Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 20,
+        "actualOperations": 210,
+        "expectedOperationsBest": 400,
+        "expectedOperationsAverage": 400,
+        "expectedOperationsWorst": 400
+    }, {
+        "name": "Tim Sort",
+        "algorithm": "Tim Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 20,
+        "actualOperations": 62,
+        "expectedOperationsBest": 20,
+        "expectedOperationsAverage": 86.43856189774725,
+        "expectedOperationsWorst": 86.43856189774725
+    }, {
+        "name": "Bubble Sort",
+        "algorithm": "Bubble Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 30,
+        "actualOperations": 806,
+        "expectedOperationsBest": 30,
+        "expectedOperationsAverage": 900,
+        "expectedOperationsWorst": 900
+    }, {
+        "name": "Counting Sort",
+        "algorithm": "Counting Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 30,
+        "actualOperations": 148,
+        "expectedOperationsBest": 60,
+        "expectedOperationsAverage": 60,
+        "expectedOperationsWorst": 60
+    }, {
+        "name": "Heap Sort",
+        "algorithm": "Heap Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 30,
+        "actualOperations": 151,
+        "expectedOperationsBest": 147.20671786825557,
+        "expectedOperationsAverage": 147.20671786825557,
+        "expectedOperationsWorst": 147.20671786825557
+    }, {
+        "name": "Insertion Sort",
+        "algorithm": "Insertion Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 30,
+        "actualOperations": 225,
+        "expectedOperationsBest": 30,
+        "expectedOperationsAverage": 900,
+        "expectedOperationsWorst": 900
+    }, {
+        "name": "Merge Sort",
+        "algorithm": "Merge Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 30,
+        "actualOperations": 113,
+        "expectedOperationsBest": 147.20671786825557,
+        "expectedOperationsAverage": 147.20671786825557,
+        "expectedOperationsWorst": 147.20671786825557
+    }, {
+        "name": "Quick Sort",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 30,
+        "actualOperations": 202,
+        "expectedOperationsBest": 147.20671786825557,
+        "expectedOperationsAverage": 147.20671786825557,
+        "expectedOperationsWorst": 900
+    }, {
+        "name": "Selection Sort",
+        "algorithm": "Selection Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 30,
+        "actualOperations": 465,
+        "expectedOperationsBest": 900,
+        "expectedOperationsAverage": 900,
+        "expectedOperationsWorst": 900
+    }, {
+        "name": "Tim Sort",
+        "algorithm": "Tim Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 30,
+        "actualOperations": 108,
+        "expectedOperationsBest": 30,
+        "expectedOperationsAverage": 147.20671786825557,
+        "expectedOperationsWorst": 147.20671786825557
+    }, {
+        "name": "Bubble Sort",
+        "algorithm": "Bubble Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 40,
+        "actualOperations": 1394,
+        "expectedOperationsBest": 40,
+        "expectedOperationsAverage": 1600,
+        "expectedOperationsWorst": 1600
+    }, {
+        "name": "Counting Sort",
+        "algorithm": "Counting Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 40,
+        "actualOperations": 198,
+        "expectedOperationsBest": 80,
+        "expectedOperationsAverage": 80,
+        "expectedOperationsWorst": 80
+    }, {
+        "name": "Heap Sort",
+        "algorithm": "Heap Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 40,
+        "actualOperations": 223,
+        "expectedOperationsBest": 212.8771237954945,
+        "expectedOperationsAverage": 212.8771237954945,
+        "expectedOperationsWorst": 212.8771237954945
+    }, {
+        "name": "Insertion Sort",
+        "algorithm": "Insertion Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 40,
+        "actualOperations": 424,
+        "expectedOperationsBest": 40,
+        "expectedOperationsAverage": 1600,
+        "expectedOperationsWorst": 1600
+    }, {
+        "name": "Merge Sort",
+        "algorithm": "Merge Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 40,
+        "actualOperations": 167,
+        "expectedOperationsBest": 212.8771237954945,
+        "expectedOperationsAverage": 212.8771237954945,
+        "expectedOperationsWorst": 212.8771237954945
+    }, {
+        "name": "Quick Sort",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 40,
+        "actualOperations": 261,
+        "expectedOperationsBest": 212.8771237954945,
+        "expectedOperationsAverage": 212.8771237954945,
+        "expectedOperationsWorst": 1600
+    }, {
+        "name": "Selection Sort",
+        "algorithm": "Selection Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 40,
+        "actualOperations": 820,
+        "expectedOperationsBest": 1600,
+        "expectedOperationsAverage": 1600,
+        "expectedOperationsWorst": 1600
+    }, {
+        "name": "Tim Sort",
+        "algorithm": "Tim Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 40,
+        "actualOperations": 163,
+        "expectedOperationsBest": 40,
+        "expectedOperationsAverage": 212.8771237954945,
+        "expectedOperationsWorst": 212.8771237954945
+    }, {
+        "name": "Bubble Sort",
+        "algorithm": "Bubble Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 60,
+        "actualOperations": 3172,
+        "expectedOperationsBest": 60,
+        "expectedOperationsAverage": 3600,
+        "expectedOperationsWorst": 3600
+    }, {
+        "name": "Counting Sort",
+        "algorithm": "Counting Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 60,
+        "actualOperations": 300,
+        "expectedOperationsBest": 120,
+        "expectedOperationsAverage": 120,
+        "expectedOperationsWorst": 120
+    }, {
+        "name": "Heap Sort",
+        "algorithm": "Heap Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 60,
+        "actualOperations": 372,
+        "expectedOperationsBest": 354.41343573651113,
+        "expectedOperationsAverage": 354.41343573651113,
+        "expectedOperationsWorst": 354.41343573651113
+    }, {
+        "name": "Insertion Sort",
+        "algorithm": "Insertion Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 60,
+        "actualOperations": 875,
+        "expectedOperationsBest": 60,
+        "expectedOperationsAverage": 3600,
+        "expectedOperationsWorst": 3600
+    }, {
+        "name": "Merge Sort",
+        "algorithm": "Merge Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 60,
+        "actualOperations": 274,
+        "expectedOperationsBest": 354.41343573651113,
+        "expectedOperationsAverage": 354.41343573651113,
+        "expectedOperationsWorst": 354.41343573651113
+    }, {
+        "name": "Quick Sort",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 60,
+        "actualOperations": 406,
+        "expectedOperationsBest": 354.41343573651113,
+        "expectedOperationsAverage": 354.41343573651113,
+        "expectedOperationsWorst": 3600
+    }, {
+        "name": "Selection Sort",
+        "algorithm": "Selection Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 60,
+        "actualOperations": 1830,
+        "expectedOperationsBest": 3600,
+        "expectedOperationsAverage": 3600,
+        "expectedOperationsWorst": 3600
+    }, {
+        "name": "Tim Sort",
+        "algorithm": "Tim Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 60,
+        "actualOperations": 274,
+        "expectedOperationsBest": 60,
+        "expectedOperationsAverage": 354.41343573651113,
+        "expectedOperationsWorst": 354.41343573651113
+    }, {
+        "name": "Bubble Sort",
+        "algorithm": "Bubble Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 80,
+        "actualOperations": 5670,
+        "expectedOperationsBest": 80,
+        "expectedOperationsAverage": 6400,
+        "expectedOperationsWorst": 6400
+    }, {
+        "name": "Counting Sort",
+        "algorithm": "Counting Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 80,
+        "actualOperations": 398,
+        "expectedOperationsBest": 160,
+        "expectedOperationsAverage": 160,
+        "expectedOperationsWorst": 160
+    }, {
+        "name": "Heap Sort",
+        "algorithm": "Heap Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 80,
+        "actualOperations": 519,
+        "expectedOperationsBest": 505.754247590989,
+        "expectedOperationsAverage": 505.754247590989,
+        "expectedOperationsWorst": 505.754247590989
+    }, {
+        "name": "Insertion Sort",
+        "algorithm": "Insertion Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 80,
+        "actualOperations": 1673,
+        "expectedOperationsBest": 80,
+        "expectedOperationsAverage": 6400,
+        "expectedOperationsWorst": 6400
+    }, {
+        "name": "Merge Sort",
+        "algorithm": "Merge Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 80,
+        "actualOperations": 399,
+        "expectedOperationsBest": 505.754247590989,
+        "expectedOperationsAverage": 505.754247590989,
+        "expectedOperationsWorst": 505.754247590989
+    }, {
+        "name": "Quick Sort",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 80,
+        "actualOperations": 545,
+        "expectedOperationsBest": 505.754247590989,
+        "expectedOperationsAverage": 505.754247590989,
+        "expectedOperationsWorst": 6400
+    }, {
+        "name": "Selection Sort",
+        "algorithm": "Selection Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 80,
+        "actualOperations": 3240,
+        "expectedOperationsBest": 6400,
+        "expectedOperationsAverage": 6400,
+        "expectedOperationsWorst": 6400
+    }, {
+        "name": "Tim Sort",
+        "algorithm": "Tim Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 80,
+        "actualOperations": 405,
+        "expectedOperationsBest": 80,
+        "expectedOperationsAverage": 505.754247590989,
+        "expectedOperationsWorst": 505.754247590989
+    }, {
+        "name": "Bubble Sort",
+        "algorithm": "Bubble Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 100,
+        "actualOperations": 8989,
+        "expectedOperationsBest": 100,
+        "expectedOperationsAverage": 10000,
+        "expectedOperationsWorst": 10000
+    }, {
+        "name": "Counting Sort",
+        "algorithm": "Counting Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 100,
+        "actualOperations": 500,
+        "expectedOperationsBest": 200,
+        "expectedOperationsAverage": 200,
+        "expectedOperationsWorst": 200
+    }, {
+        "name": "Heap Sort",
+        "algorithm": "Heap Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 100,
+        "actualOperations": 674,
+        "expectedOperationsBest": 664.3856189774724,
+        "expectedOperationsAverage": 664.3856189774724,
+        "expectedOperationsWorst": 664.3856189774724
+    }, {
+        "name": "Insertion Sort",
+        "algorithm": "Insertion Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 100,
+        "actualOperations": 2490,
+        "expectedOperationsBest": 100,
+        "expectedOperationsAverage": 10000,
+        "expectedOperationsWorst": 10000
+    }, {
+        "name": "Merge Sort",
+        "algorithm": "Merge Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 100,
+        "actualOperations": 548,
+        "expectedOperationsBest": 664.3856189774724,
+        "expectedOperationsAverage": 664.3856189774724,
+        "expectedOperationsWorst": 664.3856189774724
+    }, {
+        "name": "Quick Sort",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 100,
+        "actualOperations": 788,
+        "expectedOperationsBest": 664.3856189774724,
+        "expectedOperationsAverage": 664.3856189774724,
+        "expectedOperationsWorst": 10000
+    }, {
+        "name": "Selection Sort",
+        "algorithm": "Selection Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 100,
+        "actualOperations": 5050,
+        "expectedOperationsBest": 10000,
+        "expectedOperationsAverage": 10000,
+        "expectedOperationsWorst": 10000
+    }, {
+        "name": "Tim Sort",
+        "algorithm": "Tim Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 100,
+        "actualOperations": 534,
+        "expectedOperationsBest": 100,
+        "expectedOperationsAverage": 664.3856189774724,
+        "expectedOperationsWorst": 664.3856189774724
+    }, {
+        "name": "Bubble Sort",
+        "algorithm": "Bubble Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 150,
+        "actualOperations": 19479,
+        "expectedOperationsBest": 150,
+        "expectedOperationsAverage": 22500,
+        "expectedOperationsWorst": 22500
+    }, {
+        "name": "Counting Sort",
+        "algorithm": "Counting Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 150,
+        "actualOperations": 746,
+        "expectedOperationsBest": 300,
+        "expectedOperationsAverage": 300,
+        "expectedOperationsWorst": 300
+    }, {
+        "name": "Heap Sort",
+        "algorithm": "Heap Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 150,
+        "actualOperations": 1105,
+        "expectedOperationsBest": 1084.322803574382,
+        "expectedOperationsAverage": 1084.322803574382,
+        "expectedOperationsWorst": 1084.322803574382
+    }, {
+        "name": "Insertion Sort",
+        "algorithm": "Insertion Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 150,
+        "actualOperations": 5286,
+        "expectedOperationsBest": 150,
+        "expectedOperationsAverage": 22500,
+        "expectedOperationsWorst": 22500
+    }, {
+        "name": "Merge Sort",
+        "algorithm": "Merge Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 150,
+        "actualOperations": 890,
+        "expectedOperationsBest": 1084.322803574382,
+        "expectedOperationsAverage": 1084.322803574382,
+        "expectedOperationsWorst": 1084.322803574382
+    }, {
+        "name": "Quick Sort",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 150,
+        "actualOperations": 1453,
+        "expectedOperationsBest": 1084.322803574382,
+        "expectedOperationsAverage": 1084.322803574382,
+        "expectedOperationsWorst": 22500
+    }, {
+        "name": "Selection Sort",
+        "algorithm": "Selection Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 150,
+        "actualOperations": 11325,
+        "expectedOperationsBest": 22500,
+        "expectedOperationsAverage": 22500,
+        "expectedOperationsWorst": 22500
+    }, {
+        "name": "Tim Sort",
+        "algorithm": "Tim Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 150,
+        "actualOperations": 901,
+        "expectedOperationsBest": 150,
+        "expectedOperationsAverage": 1084.322803574382,
+        "expectedOperationsWorst": 1084.322803574382
+    }, {
+        "name": "Bubble Sort",
+        "algorithm": "Bubble Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 200,
+        "actualOperations": 36984,
+        "expectedOperationsBest": 200,
+        "expectedOperationsAverage": 40000,
+        "expectedOperationsWorst": 40000
+    }, {
+        "name": "Counting Sort",
+        "algorithm": "Counting Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 200,
+        "actualOperations": 996,
+        "expectedOperationsBest": 400,
+        "expectedOperationsAverage": 400,
+        "expectedOperationsWorst": 400
+    }, {
+        "name": "Heap Sort",
+        "algorithm": "Heap Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 200,
+        "actualOperations": 1571,
+        "expectedOperationsBest": 1528.7712379549448,
+        "expectedOperationsAverage": 1528.7712379549448,
+        "expectedOperationsWorst": 1528.7712379549448
+    }, {
+        "name": "Insertion Sort",
+        "algorithm": "Insertion Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 200,
+        "actualOperations": 9904,
+        "expectedOperationsBest": 200,
+        "expectedOperationsAverage": 40000,
+        "expectedOperationsWorst": 40000
+    }, {
+        "name": "Merge Sort",
+        "algorithm": "Merge Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 200,
+        "actualOperations": 1277,
+        "expectedOperationsBest": 1528.7712379549448,
+        "expectedOperationsAverage": 1528.7712379549448,
+        "expectedOperationsWorst": 1528.7712379549448
+    }, {
+        "name": "Quick Sort",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 200,
+        "actualOperations": 1692,
+        "expectedOperationsBest": 1528.7712379549448,
+        "expectedOperationsAverage": 1528.7712379549448,
+        "expectedOperationsWorst": 40000
+    }, {
+        "name": "Selection Sort",
+        "algorithm": "Selection Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 200,
+        "actualOperations": 20100,
+        "expectedOperationsBest": 40000,
+        "expectedOperationsAverage": 40000,
+        "expectedOperationsWorst": 40000
+    }, {
+        "name": "Tim Sort",
+        "algorithm": "Tim Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 200,
+        "actualOperations": 1283,
+        "expectedOperationsBest": 200,
+        "expectedOperationsAverage": 1528.7712379549448,
+        "expectedOperationsWorst": 1528.7712379549448
+    }, {
+        "name": "Bubble Sort",
+        "algorithm": "Bubble Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 300,
+        "actualOperations": 79765,
+        "expectedOperationsBest": 300,
+        "expectedOperationsAverage": 90000,
+        "expectedOperationsWorst": 90000
+    }, {
+        "name": "Counting Sort",
+        "algorithm": "Counting Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 300,
+        "actualOperations": 1500,
+        "expectedOperationsBest": 600,
+        "expectedOperationsAverage": 600,
+        "expectedOperationsWorst": 600
+    }, {
+        "name": "Heap Sort",
+        "algorithm": "Heap Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 300,
+        "actualOperations": 2520,
+        "expectedOperationsBest": 2468.6456071487646,
+        "expectedOperationsAverage": 2468.6456071487646,
+        "expectedOperationsWorst": 2468.6456071487646
+    }, {
+        "name": "Insertion Sort",
+        "algorithm": "Insertion Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 300,
+        "actualOperations": 22004,
+        "expectedOperationsBest": 300,
+        "expectedOperationsAverage": 90000,
+        "expectedOperationsWorst": 90000
+    }, {
+        "name": "Merge Sort",
+        "algorithm": "Merge Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 300,
+        "actualOperations": 2091,
+        "expectedOperationsBest": 2468.6456071487646,
+        "expectedOperationsAverage": 2468.6456071487646,
+        "expectedOperationsWorst": 2468.6456071487646
+    }, {
+        "name": "Quick Sort",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 300,
+        "actualOperations": 2890,
+        "expectedOperationsBest": 2468.6456071487646,
+        "expectedOperationsAverage": 2468.6456071487646,
+        "expectedOperationsWorst": 90000
+    }, {
+        "name": "Selection Sort",
+        "algorithm": "Selection Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 300,
+        "actualOperations": 45150,
+        "expectedOperationsBest": 90000,
+        "expectedOperationsAverage": 90000,
+        "expectedOperationsWorst": 90000
+    }, {
+        "name": "Tim Sort",
+        "algorithm": "Tim Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 300,
+        "actualOperations": 2092,
+        "expectedOperationsBest": 300,
+        "expectedOperationsAverage": 2468.6456071487646,
+        "expectedOperationsWorst": 2468.6456071487646
+    }, {
+        "name": "Bubble Sort",
+        "algorithm": "Bubble Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 400,
+        "actualOperations": 143157,
+        "expectedOperationsBest": 400,
+        "expectedOperationsAverage": 160000,
+        "expectedOperationsWorst": 160000
+    }, {
+        "name": "Counting Sort",
+        "algorithm": "Counting Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 400,
+        "actualOperations": 1996,
+        "expectedOperationsBest": 800,
+        "expectedOperationsAverage": 800,
+        "expectedOperationsWorst": 800
+    }, {
+        "name": "Heap Sort",
+        "algorithm": "Heap Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 400,
+        "actualOperations": 3519,
+        "expectedOperationsBest": 3457.54247590989,
+        "expectedOperationsAverage": 3457.54247590989,
+        "expectedOperationsWorst": 3457.54247590989
+    }, {
+        "name": "Insertion Sort",
+        "algorithm": "Insertion Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 400,
+        "actualOperations": 39350,
+        "expectedOperationsBest": 400,
+        "expectedOperationsAverage": 160000,
+        "expectedOperationsWorst": 160000
+    }, {
+        "name": "Merge Sort",
+        "algorithm": "Merge Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 400,
+        "actualOperations": 2945,
+        "expectedOperationsBest": 3457.54247590989,
+        "expectedOperationsAverage": 3457.54247590989,
+        "expectedOperationsWorst": 3457.54247590989
+    }, {
+        "name": "Quick Sort",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 400,
+        "actualOperations": 3926,
+        "expectedOperationsBest": 3457.54247590989,
+        "expectedOperationsAverage": 3457.54247590989,
+        "expectedOperationsWorst": 160000
+    }, {
+        "name": "Selection Sort",
+        "algorithm": "Selection Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 400,
+        "actualOperations": 80200,
+        "expectedOperationsBest": 160000,
+        "expectedOperationsAverage": 160000,
+        "expectedOperationsWorst": 160000
+    }, {
+        "name": "Tim Sort",
+        "algorithm": "Tim Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 400,
+        "actualOperations": 2937,
+        "expectedOperationsBest": 400,
+        "expectedOperationsAverage": 3457.54247590989,
+        "expectedOperationsWorst": 3457.54247590989
+    }, {
+        "name": "Bubble Sort",
+        "algorithm": "Bubble Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 600,
+        "actualOperations": 329949,
+        "expectedOperationsBest": 600,
+        "expectedOperationsAverage": 360000,
+        "expectedOperationsWorst": 360000
+    }, {
+        "name": "Counting Sort",
+        "algorithm": "Counting Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 600,
+        "actualOperations": 3000,
+        "expectedOperationsBest": 1200,
+        "expectedOperationsAverage": 1200,
+        "expectedOperationsWorst": 1200
+    }, {
+        "name": "Heap Sort",
+        "algorithm": "Heap Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 600,
+        "actualOperations": 5620,
+        "expectedOperationsBest": 5537.291214297529,
+        "expectedOperationsAverage": 5537.291214297529,
+        "expectedOperationsWorst": 5537.291214297529
+    }, {
+        "name": "Insertion Sort",
+        "algorithm": "Insertion Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 600,
+        "actualOperations": 88266,
+        "expectedOperationsBest": 600,
+        "expectedOperationsAverage": 360000,
+        "expectedOperationsWorst": 360000
+    }, {
+        "name": "Merge Sort",
+        "algorithm": "Merge Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 600,
+        "actualOperations": 4807,
+        "expectedOperationsBest": 5537.291214297529,
+        "expectedOperationsAverage": 5537.291214297529,
+        "expectedOperationsWorst": 5537.291214297529
+    }, {
+        "name": "Quick Sort",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 600,
+        "actualOperations": 6774,
+        "expectedOperationsBest": 5537.291214297529,
+        "expectedOperationsAverage": 5537.291214297529,
+        "expectedOperationsWorst": 360000
+    }, {
+        "name": "Selection Sort",
+        "algorithm": "Selection Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 600,
+        "actualOperations": 180300,
+        "expectedOperationsBest": 360000,
+        "expectedOperationsAverage": 360000,
+        "expectedOperationsWorst": 360000
+    }, {
+        "name": "Tim Sort",
+        "algorithm": "Tim Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 600,
+        "actualOperations": 4805,
+        "expectedOperationsBest": 600,
+        "expectedOperationsAverage": 5537.291214297529,
+        "expectedOperationsWorst": 5537.291214297529
+    }, {
+        "name": "Bubble Sort",
+        "algorithm": "Bubble Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 800,
+        "actualOperations": 621576,
+        "expectedOperationsBest": 800,
+        "expectedOperationsAverage": 640000,
+        "expectedOperationsWorst": 640000
+    }, {
+        "name": "Counting Sort",
+        "algorithm": "Counting Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 800,
+        "actualOperations": 4000,
+        "expectedOperationsBest": 1600,
+        "expectedOperationsAverage": 1600,
+        "expectedOperationsWorst": 1600
+    }, {
+        "name": "Heap Sort",
+        "algorithm": "Heap Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 800,
+        "actualOperations": 7828,
+        "expectedOperationsBest": 7715.08495181978,
+        "expectedOperationsAverage": 7715.08495181978,
+        "expectedOperationsWorst": 7715.08495181978
+    }, {
+        "name": "Insertion Sort",
+        "algorithm": "Insertion Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 800,
+        "actualOperations": 156976,
+        "expectedOperationsBest": 800,
+        "expectedOperationsAverage": 640000,
+        "expectedOperationsWorst": 640000
+    }, {
+        "name": "Merge Sort",
+        "algorithm": "Merge Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 800,
+        "actualOperations": 6743,
+        "expectedOperationsBest": 7715.08495181978,
+        "expectedOperationsAverage": 7715.08495181978,
+        "expectedOperationsWorst": 7715.08495181978
+    }, {
+        "name": "Quick Sort",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 800,
+        "actualOperations": 9808,
+        "expectedOperationsBest": 7715.08495181978,
+        "expectedOperationsAverage": 7715.08495181978,
+        "expectedOperationsWorst": 640000
+    }, {
+        "name": "Selection Sort",
+        "algorithm": "Selection Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 800,
+        "actualOperations": 320400,
+        "expectedOperationsBest": 640000,
+        "expectedOperationsAverage": 640000,
+        "expectedOperationsWorst": 640000
+    }, {
+        "name": "Tim Sort",
+        "algorithm": "Tim Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 800,
+        "actualOperations": 6721,
+        "expectedOperationsBest": 800,
+        "expectedOperationsAverage": 7715.08495181978,
+        "expectedOperationsWorst": 7715.08495181978
+    }, {
+        "name": "Bubble Sort",
+        "algorithm": "Bubble Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 1000,
+        "actualOperations": 944944,
+        "expectedOperationsBest": 1000,
+        "expectedOperationsAverage": 1000000,
+        "expectedOperationsWorst": 1000000
+    }, {
+        "name": "Counting Sort",
+        "algorithm": "Counting Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 1000,
+        "actualOperations": 4998,
+        "expectedOperationsBest": 2000,
+        "expectedOperationsAverage": 2000,
+        "expectedOperationsWorst": 2000
+    }, {
+        "name": "Heap Sort",
+        "algorithm": "Heap Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 1000,
+        "actualOperations": 10093,
+        "expectedOperationsBest": 9965.784284662088,
+        "expectedOperationsAverage": 9965.784284662088,
+        "expectedOperationsWorst": 9965.784284662088
+    }, {
+        "name": "Insertion Sort",
+        "algorithm": "Insertion Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 1000,
+        "actualOperations": 247041,
+        "expectedOperationsBest": 1000,
+        "expectedOperationsAverage": 1000000,
+        "expectedOperationsWorst": 1000000
+    }, {
+        "name": "Merge Sort",
+        "algorithm": "Merge Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 1000,
+        "actualOperations": 8688,
+        "expectedOperationsBest": 9965.784284662088,
+        "expectedOperationsAverage": 9965.784284662088,
+        "expectedOperationsWorst": 9965.784284662088
+    }, {
+        "name": "Quick Sort",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 1000,
+        "actualOperations": 12762,
+        "expectedOperationsBest": 9965.784284662088,
+        "expectedOperationsAverage": 9965.784284662088,
+        "expectedOperationsWorst": 1000000
+    }, {
+        "name": "Selection Sort",
+        "algorithm": "Selection Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 1000,
+        "actualOperations": 500500,
+        "expectedOperationsBest": 1000000,
+        "expectedOperationsAverage": 1000000,
+        "expectedOperationsWorst": 1000000
+    }, {
+        "name": "Tim Sort",
+        "algorithm": "Tim Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 1000,
+        "actualOperations": 8684,
+        "expectedOperationsBest": 1000,
+        "expectedOperationsAverage": 9965.784284662088,
+        "expectedOperationsWorst": 9965.784284662088
+    }, {
+        "name": "Bubble Sort",
+        "algorithm": "Bubble Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 1500,
+        "actualOperations": 2164442,
+        "expectedOperationsBest": 1500,
+        "expectedOperationsAverage": 2250000,
+        "expectedOperationsWorst": 2250000
+    }, {
+        "name": "Counting Sort",
+        "algorithm": "Counting Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 1500,
+        "actualOperations": 7498,
+        "expectedOperationsBest": 3000,
+        "expectedOperationsAverage": 3000,
+        "expectedOperationsWorst": 3000
+    }, {
+        "name": "Heap Sort",
+        "algorithm": "Heap Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 1500,
+        "actualOperations": 16066,
+        "expectedOperationsBest": 15826.120178074865,
+        "expectedOperationsAverage": 15826.120178074865,
+        "expectedOperationsWorst": 15826.120178074865
+    }, {
+        "name": "Insertion Sort",
+        "algorithm": "Insertion Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 1500,
+        "actualOperations": 554111,
+        "expectedOperationsBest": 1500,
+        "expectedOperationsAverage": 2250000,
+        "expectedOperationsWorst": 2250000
+    }, {
+        "name": "Merge Sort",
+        "algorithm": "Merge Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 1500,
+        "actualOperations": 13991,
+        "expectedOperationsBest": 15826.120178074865,
+        "expectedOperationsAverage": 15826.120178074865,
+        "expectedOperationsWorst": 15826.120178074865
+    }, {
+        "name": "Quick Sort",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 1500,
+        "actualOperations": 21633,
+        "expectedOperationsBest": 15826.120178074865,
+        "expectedOperationsAverage": 15826.120178074865,
+        "expectedOperationsWorst": 2250000
+    }, {
+        "name": "Selection Sort",
+        "algorithm": "Selection Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 1500,
+        "actualOperations": 1125750,
+        "expectedOperationsBest": 2250000,
+        "expectedOperationsAverage": 2250000,
+        "expectedOperationsWorst": 2250000
+    }, {
+        "name": "Tim Sort",
+        "algorithm": "Tim Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 1500,
+        "actualOperations": 13936,
+        "expectedOperationsBest": 1500,
+        "expectedOperationsAverage": 15826.120178074865,
+        "expectedOperationsWorst": 15826.120178074865
+    }, {
+        "name": "Bubble Sort",
+        "algorithm": "Bubble Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 2000,
+        "actualOperations": 3889944,
+        "expectedOperationsBest": 2000,
+        "expectedOperationsAverage": 4000000,
+        "expectedOperationsWorst": 4000000
+    }, {
+        "name": "Counting Sort",
+        "algorithm": "Counting Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 2000,
+        "actualOperations": 9998,
+        "expectedOperationsBest": 4000,
+        "expectedOperationsAverage": 4000,
+        "expectedOperationsWorst": 4000
+    }, {
+        "name": "Heap Sort",
+        "algorithm": "Heap Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 2000,
+        "actualOperations": 22146,
+        "expectedOperationsBest": 21931.568569324176,
+        "expectedOperationsAverage": 21931.568569324176,
+        "expectedOperationsWorst": 21931.568569324176
+    }, {
+        "name": "Insertion Sort",
+        "algorithm": "Insertion Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 2000,
+        "actualOperations": 995624,
+        "expectedOperationsBest": 2000,
+        "expectedOperationsAverage": 4000000,
+        "expectedOperationsWorst": 4000000
+    }, {
+        "name": "Merge Sort",
+        "algorithm": "Merge Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 2000,
+        "actualOperations": 19428,
+        "expectedOperationsBest": 21931.568569324176,
+        "expectedOperationsAverage": 21931.568569324176,
+        "expectedOperationsWorst": 21931.568569324176
+    }, {
+        "name": "Quick Sort",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 2000,
+        "actualOperations": 25743,
+        "expectedOperationsBest": 21931.568569324176,
+        "expectedOperationsAverage": 21931.568569324176,
+        "expectedOperationsWorst": 4000000
+    }, {
+        "name": "Selection Sort",
+        "algorithm": "Selection Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 2000,
+        "actualOperations": 2001000,
+        "expectedOperationsBest": 4000000,
+        "expectedOperationsAverage": 4000000,
+        "expectedOperationsWorst": 4000000
+    }, {
+        "name": "Tim Sort",
+        "algorithm": "Tim Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 2000,
+        "actualOperations": 19341,
+        "expectedOperationsBest": 2000,
+        "expectedOperationsAverage": 21931.568569324176,
+        "expectedOperationsWorst": 21931.568569324176
+    }, {
+        "name": "Bubble Sort",
+        "algorithm": "Bubble Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 3000,
+        "actualOperations": 8852950,
+        "expectedOperationsBest": 3000,
+        "expectedOperationsAverage": 9000000,
+        "expectedOperationsWorst": 9000000
+    }, {
+        "name": "Counting Sort",
+        "algorithm": "Counting Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 3000,
+        "actualOperations": 15000,
+        "expectedOperationsBest": 6000,
+        "expectedOperationsAverage": 6000,
+        "expectedOperationsWorst": 6000
+    }, {
+        "name": "Heap Sort",
+        "algorithm": "Heap Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 3000,
+        "actualOperations": 35040,
+        "expectedOperationsBest": 34652.24035614973,
+        "expectedOperationsAverage": 34652.24035614973,
+        "expectedOperationsWorst": 34652.24035614973
+    }, {
+        "name": "Insertion Sort",
+        "algorithm": "Insertion Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 3000,
+        "actualOperations": 2255480,
+        "expectedOperationsBest": 3000,
+        "expectedOperationsAverage": 9000000,
+        "expectedOperationsWorst": 9000000
+    }, {
+        "name": "Merge Sort",
+        "algorithm": "Merge Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 3000,
+        "actualOperations": 30938,
+        "expectedOperationsBest": 34652.24035614973,
+        "expectedOperationsAverage": 34652.24035614973,
+        "expectedOperationsWorst": 34652.24035614973
+    }, {
+        "name": "Quick Sort",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 3000,
+        "actualOperations": 43962,
+        "expectedOperationsBest": 34652.24035614973,
+        "expectedOperationsAverage": 34652.24035614973,
+        "expectedOperationsWorst": 9000000
+    }, {
+        "name": "Selection Sort",
+        "algorithm": "Selection Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 3000,
+        "actualOperations": 4501500,
+        "expectedOperationsBest": 9000000,
+        "expectedOperationsAverage": 9000000,
+        "expectedOperationsWorst": 9000000
+    }, {
+        "name": "Tim Sort",
+        "algorithm": "Tim Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 3000,
+        "actualOperations": 30871,
+        "expectedOperationsBest": 3000,
+        "expectedOperationsAverage": 34652.24035614973,
+        "expectedOperationsWorst": 34652.24035614973
+    }, {
+        "name": "Bubble Sort",
+        "algorithm": "Bubble Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 4000,
+        "actualOperations": 15779944,
+        "expectedOperationsBest": 4000,
+        "expectedOperationsAverage": 16000000,
+        "expectedOperationsWorst": 16000000
+    }, {
+        "name": "Counting Sort",
+        "algorithm": "Counting Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 4000,
+        "actualOperations": 19998,
+        "expectedOperationsBest": 8000,
+        "expectedOperationsAverage": 8000,
+        "expectedOperationsWorst": 8000
+    }, {
+        "name": "Heap Sort",
+        "algorithm": "Heap Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 4000,
+        "actualOperations": 48314,
+        "expectedOperationsBest": 47863.13713864835,
+        "expectedOperationsAverage": 47863.13713864835,
+        "expectedOperationsWorst": 47863.13713864835
+    }, {
+        "name": "Insertion Sort",
+        "algorithm": "Insertion Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 4000,
+        "actualOperations": 3983615,
+        "expectedOperationsBest": 4000,
+        "expectedOperationsAverage": 16000000,
+        "expectedOperationsWorst": 16000000
+    }, {
+        "name": "Merge Sort",
+        "algorithm": "Merge Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 4000,
+        "actualOperations": 42811,
+        "expectedOperationsBest": 47863.13713864835,
+        "expectedOperationsAverage": 47863.13713864835,
+        "expectedOperationsWorst": 47863.13713864835
+    }, {
+        "name": "Quick Sort",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 4000,
+        "actualOperations": 58180,
+        "expectedOperationsBest": 47863.13713864835,
+        "expectedOperationsAverage": 47863.13713864835,
+        "expectedOperationsWorst": 16000000
+    }, {
+        "name": "Selection Sort",
+        "algorithm": "Selection Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 4000,
+        "actualOperations": 8002000,
+        "expectedOperationsBest": 16000000,
+        "expectedOperationsAverage": 16000000,
+        "expectedOperationsWorst": 16000000
+    }, {
+        "name": "Tim Sort",
+        "algorithm": "Tim Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 4000,
+        "actualOperations": 42714,
+        "expectedOperationsBest": 4000,
+        "expectedOperationsAverage": 47863.13713864835,
+        "expectedOperationsWorst": 47863.13713864835
+    }, {
+        "name": "Bubble Sort",
+        "algorithm": "Bubble Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 6000,
+        "actualOperations": 35753958,
+        "expectedOperationsBest": 6000,
+        "expectedOperationsAverage": 36000000,
+        "expectedOperationsWorst": 36000000
+    }, {
+        "name": "Counting Sort",
+        "algorithm": "Counting Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 6000,
+        "actualOperations": 29998,
+        "expectedOperationsBest": 12000,
+        "expectedOperationsAverage": 12000,
+        "expectedOperationsWorst": 12000
+    }, {
+        "name": "Heap Sort",
+        "algorithm": "Heap Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 6000,
+        "actualOperations": 76130,
+        "expectedOperationsBest": 75304.48071229945,
+        "expectedOperationsAverage": 75304.48071229945,
+        "expectedOperationsWorst": 75304.48071229945
+    }, {
+        "name": "Insertion Sort",
+        "algorithm": "Insertion Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 6000,
+        "actualOperations": 9032657,
+        "expectedOperationsBest": 6000,
+        "expectedOperationsAverage": 36000000,
+        "expectedOperationsWorst": 36000000
+    }, {
+        "name": "Merge Sort",
+        "algorithm": "Merge Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 6000,
+        "actualOperations": 67833,
+        "expectedOperationsBest": 75304.48071229945,
+        "expectedOperationsAverage": 75304.48071229945,
+        "expectedOperationsWorst": 75304.48071229945
+    }, {
+        "name": "Quick Sort",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 6000,
+        "actualOperations": 102076,
+        "expectedOperationsBest": 75304.48071229945,
+        "expectedOperationsAverage": 75304.48071229945,
+        "expectedOperationsWorst": 36000000
+    }, {
+        "name": "Selection Sort",
+        "algorithm": "Selection Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 6000,
+        "actualOperations": 18003000,
+        "expectedOperationsBest": 36000000,
+        "expectedOperationsAverage": 36000000,
+        "expectedOperationsWorst": 36000000
+    }, {
+        "name": "Tim Sort",
+        "algorithm": "Tim Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 6000,
+        "actualOperations": 67783,
+        "expectedOperationsBest": 6000,
+        "expectedOperationsAverage": 75304.48071229945,
+        "expectedOperationsWorst": 75304.48071229945
+    }, {
+        "name": "Bubble Sort",
+        "algorithm": "Bubble Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 8000,
+        "actualOperations": 62991873,
+        "expectedOperationsBest": 8000,
+        "expectedOperationsAverage": 64000000,
+        "expectedOperationsWorst": 64000000
+    }, {
+        "name": "Counting Sort",
+        "algorithm": "Counting Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 8000,
+        "actualOperations": 39996,
+        "expectedOperationsBest": 16000,
+        "expectedOperationsAverage": 16000,
+        "expectedOperationsWorst": 16000
+    }, {
+        "name": "Heap Sort",
+        "algorithm": "Heap Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 8000,
+        "actualOperations": 104621,
+        "expectedOperationsBest": 103726.2742772967,
+        "expectedOperationsAverage": 103726.2742772967,
+        "expectedOperationsWorst": 103726.2742772967
+    }, {
+        "name": "Insertion Sort",
+        "algorithm": "Insertion Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 8000,
+        "actualOperations": 15938077,
+        "expectedOperationsBest": 8000,
+        "expectedOperationsAverage": 64000000,
+        "expectedOperationsWorst": 64000000
+    }, {
+        "name": "Merge Sort",
+        "algorithm": "Merge Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 8000,
+        "actualOperations": 93663,
+        "expectedOperationsBest": 103726.2742772967,
+        "expectedOperationsAverage": 103726.2742772967,
+        "expectedOperationsWorst": 103726.2742772967
+    }, {
+        "name": "Quick Sort",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 8000,
+        "actualOperations": 139831,
+        "expectedOperationsBest": 103726.2742772967,
+        "expectedOperationsAverage": 103726.2742772967,
+        "expectedOperationsWorst": 64000000
+    }, {
+        "name": "Selection Sort",
+        "algorithm": "Selection Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 8000,
+        "actualOperations": 32004000,
+        "expectedOperationsBest": 64000000,
+        "expectedOperationsAverage": 64000000,
+        "expectedOperationsWorst": 64000000
+    }, {
+        "name": "Tim Sort",
+        "algorithm": "Tim Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 8000,
+        "actualOperations": 93482,
+        "expectedOperationsBest": 8000,
+        "expectedOperationsAverage": 103726.2742772967,
+        "expectedOperationsWorst": 103726.2742772967
+    }
+]

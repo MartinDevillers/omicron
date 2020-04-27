@@ -1,0 +1,191 @@
+[{
+        "name": "Random",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 10,
+        "actualOperations": 36,
+        "expectedOperationsBest": 33.219280948873624,
+        "expectedOperationsAverage": 33.219280948873624,
+        "expectedOperationsWorst": 100
+    }, {
+        "name": "Random",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 15,
+        "actualOperations": 57,
+        "expectedOperationsBest": 58.60335893412778,
+        "expectedOperationsAverage": 58.60335893412778,
+        "expectedOperationsWorst": 225
+    }, {
+        "name": "Random",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 20,
+        "actualOperations": 88,
+        "expectedOperationsBest": 86.43856189774725,
+        "expectedOperationsAverage": 86.43856189774725,
+        "expectedOperationsWorst": 400
+    }, {
+        "name": "Random",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 30,
+        "actualOperations": 161,
+        "expectedOperationsBest": 147.20671786825557,
+        "expectedOperationsAverage": 147.20671786825557,
+        "expectedOperationsWorst": 900
+    }, {
+        "name": "Random",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 40,
+        "actualOperations": 250,
+        "expectedOperationsBest": 212.8771237954945,
+        "expectedOperationsAverage": 212.8771237954945,
+        "expectedOperationsWorst": 1600
+    }, {
+        "name": "Random",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 60,
+        "actualOperations": 381,
+        "expectedOperationsBest": 354.41343573651113,
+        "expectedOperationsAverage": 354.41343573651113,
+        "expectedOperationsWorst": 3600
+    }, {
+        "name": "Random",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 80,
+        "actualOperations": 675,
+        "expectedOperationsBest": 505.754247590989,
+        "expectedOperationsAverage": 505.754247590989,
+        "expectedOperationsWorst": 6400
+    }, {
+        "name": "Random",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 100,
+        "actualOperations": 836,
+        "expectedOperationsBest": 664.3856189774724,
+        "expectedOperationsAverage": 664.3856189774724,
+        "expectedOperationsWorst": 10000
+    }, {
+        "name": "Random",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 150,
+        "actualOperations": 1188,
+        "expectedOperationsBest": 1084.322803574382,
+        "expectedOperationsAverage": 1084.322803574382,
+        "expectedOperationsWorst": 22500
+    }, {
+        "name": "Random",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 200,
+        "actualOperations": 1762,
+        "expectedOperationsBest": 1528.7712379549448,
+        "expectedOperationsAverage": 1528.7712379549448,
+        "expectedOperationsWorst": 40000
+    }, {
+        "name": "Random",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 300,
+        "actualOperations": 2786,
+        "expectedOperationsBest": 2468.6456071487646,
+        "expectedOperationsAverage": 2468.6456071487646,
+        "expectedOperationsWorst": 90000
+    }, {
+        "name": "Random",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 400,
+        "actualOperations": 4096,
+        "expectedOperationsBest": 3457.54247590989,
+        "expectedOperationsAverage": 3457.54247590989,
+        "expectedOperationsWorst": 160000
+    }, {
+        "name": "Random",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 600,
+        "actualOperations": 6281,
+        "expectedOperationsBest": 5537.291214297529,
+        "expectedOperationsAverage": 5537.291214297529,
+        "expectedOperationsWorst": 360000
+    }, {
+        "name": "Random",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 800,
+        "actualOperations": 9769,
+        "expectedOperationsBest": 7715.08495181978,
+        "expectedOperationsAverage": 7715.08495181978,
+        "expectedOperationsWorst": 640000
+    }, {
+        "name": "Random",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 1000,
+        "actualOperations": 12177,
+        "expectedOperationsBest": 9965.784284662088,
+        "expectedOperationsAverage": 9965.784284662088,
+        "expectedOperationsWorst": 1000000
+    }, {
+        "name": "Random",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 1500,
+        "actualOperations": 21322,
+        "expectedOperationsBest": 15826.120178074865,
+        "expectedOperationsAverage": 15826.120178074865,
+        "expectedOperationsWorst": 2250000
+    }, {
+        "name": "Random",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 2000,
+        "actualOperations": 29800,
+        "expectedOperationsBest": 21931.568569324176,
+        "expectedOperationsAverage": 21931.568569324176,
+        "expectedOperationsWorst": 4000000
+    }, {
+        "name": "Random",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 3000,
+        "actualOperations": 41801,
+        "expectedOperationsBest": 34652.24035614973,
+        "expectedOperationsAverage": 34652.24035614973,
+        "expectedOperationsWorst": 9000000
+    }, {
+        "name": "Random",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 4000,
+        "actualOperations": 59629,
+        "expectedOperationsBest": 47863.13713864835,
+        "expectedOperationsAverage": 47863.13713864835,
+        "expectedOperationsWorst": 16000000
+    }, {
+        "name": "Random",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 6000,
+        "actualOperations": 93751,
+        "expectedOperationsBest": 75304.48071229945,
+        "expectedOperationsAverage": 75304.48071229945,
+        "expectedOperationsWorst": 36000000
+    }, {
+        "name": "Random",
+        "algorithm": "Quick Sort",
+        "dataSetName": "Random",
+        "dataSetSize": 8000,
+        "actualOperations": 127440,
+        "expectedOperationsBest": 103726.2742772967,
+        "expectedOperationsAverage": 103726.2742772967,
+        "expectedOperationsWorst": 64000000
+    }
+]

@@ -1,0 +1,110 @@
+---
+title: Documentation
+slug: "/docs"
+---
+
+import analysisQuickSortRandom from "./analysis-quick-sort-random.json"
+import Algorithms from "../../../src/algorithms"
+import DataSets from "../../../src/data-sets"
+
+## Before we proceed
+
+You should have a basic understanding of what "Big O" in the context of computer science means. If you Google "[Big O notation](https://www.google.com/search?q=big+o+notation)", you will find that there *many* resources available online that describe this concept. Below are some resources to help you get started:
+
+* [Video by Gayle Laakmann McDowell](https://www.youtube.com/watch?v=v4cd1O4zkGw) - She's the author of the excellent book "Cracking The Code Interview" and does a good job explaining the concept in just under ten minutes.
+* [Big-O Cheat Sheet](https://www.bigocheatsheet.com/) - Solid overview of common data structures and sorting algorithms.
+* [Table of common time complexities](https://en.wikipedia.org/wiki/Time_complexity#Table_of_common_time_complexities) - Extensive overview of common time complexities.
+* [What is a plain English explanation of “Big O” notation?](https://stackoverflow.com/questions/487258/what-is-a-plain-english-explanation-of-big-o-notation) - Good Stack Overflow Q&A on the topic.
+* [Analysis of algorithms](https://en.wikipedia.org/wiki/Analysis_of_algorithms#Run-time_analysis) - Wikipedia article on the analysis of algorithms which also covers Big O. Quite theoretical. Moreover, do *not* read the [official Wikipedia article](https://en.wikipedia.org/wiki/Big_O_notation) on Big O as it describes the concept from its mathematical origin, which goes far deeper than is required in our computing science context.
+
+## The basic idea
+
+The premise of the Big O Visualizer is as follows:
+
+1. Generate a data set of length n
+2. Execute the algorithm on the data set and keep a count of the operations (O)
+3. Plot the result in a chart where the X-axis represents the length of the data set (n) and the Y-axis represents the operations executed (O)
+
+That's it! If we follow the above steps, we will have created a single point in the chart. By repeating these three steps with different sizes of input, types of data and algorithms we can fill the chart with more points and create interesting visualizations.
+
+## An example
+
+Below is an example using the Quick Sort algorithm on a data set filled with random numbers.
+
+<ComplexityChart title="Time complexity of Quick Sort on a random set of numbers">
+    <ComplexitySeries/>
+    <AnalysisSeries data={analysisQuickSortRandom} algorithms={[Algorithms.quickSort]} dataSets={[DataSets.random]}/>
+</ComplexityChart>
+
+I'll explain what you're looking at:
+* The horizontal axis represents the length of the data set. In this example using Quick Sort the axis starts with a list of 10 random numbers and goes up all the way to 10.000 random numbers.
+* The vertical axis represents the amount of operations the algorithm executed. Because computers can do *a lot* of work this axis goes all the way up to a hundred million!
+* The colorful areas on the background of the chart represent the typical time complexities that algorithms conform to. Desirable run times are colored green(ish), whereas undesirable run times are colored red(dish).
+* Each blue dot in the chart represents the outcome of one analysis. So the dot at n = 100 represents the amount of operations Quick Sort had to execute, in order to sort a list of a 100 random numbers. In this case this should be about 800 operations. As this analysis is performed live within your browser, the numbers will change each time you visit this page. However, the general outcome will always be the same.
+
+So what can we tell from this chart? As all the dots line up neatly with the linearithmic complexity, it means that Quick Sort has a runtime of `O(n log n)` when executed on a data set containing random numbers.
+
+Neat!
+
+The rest of this page will provide more details about how this tool works, if you're interested. If not, skip ahead to the [demo section](/demo) for more examples or you can try the tool out yourself in the [live editor](/live).
+
+## Generating data sets
+
+A data set is a list of elements on which the algorithm will perform its operation. For example, a sorting algorithm will put a list of numbers into its natural order. The following two aspects are important when generating a data sets:
+
+1. Size. The longer the list, the more work an algorithm has to do.
+2. Distribution. The characteristics of the values of the list.
+
+The Big O Visualizer comes with the following data generators.
+
+<DataSetsTable/>
+
+## Instrumenting algorithms
+
+Once the data set has been prepared it can be fed to the algorithm. Each algorithm is an implementation of the `Algorithm` class, which provides a basic framework for analyzable algorithms. Below is the implementation of the Bubble Sort algorithm as an analyzable algorithm. The code is a direct copy from Wikipedia, but with one difference: the algorithm has been instrumented so that it keeps track of its operations. This is achieved by adding two calls to the method `this.incrementOpCounter()`. One to the outer loop and one to the inner loop. These calls increment the number `operations` in the base class by one each time the algorithm iterates any of the two loops.
+
+```ts:title=src/algorithms/bubble-sort.ts {12,15}
+class BubbleSort extends Algorithm {
+
+    name = "Bubble Sort"
+    timeComplexityBest = Complexities.linear
+    timeComplexityAverage = Complexities.quadratic
+    timeComplexityWorst = Complexities.quadratic
+
+    execute(array:number[]): void {
+        let len = array.length,
+            swapped
+        do {
+            this.incrementOpCounter()
+            swapped = false
+            for (let i = 0; i < len; i++) {
+                this.incrementOpCounter()
+                if (array[i] > array[i + 1]) {
+                    let tmp = array[i]
+                    array[i] = array[i + 1]
+                    array[i + 1] = tmp
+                    swapped = true
+                }
+            }
+        } while (swapped)
+    }
+}
+```
+
+## What to count?
+Placing the incrementors at different positions can lead to different results. So where do you put them? That actually depends on *what* you want to measure, which in turn depends on your specific use case. In this project, I've focused on code iterations, which means I've (naively) placed the incrementors at the beginning of each loop and recursive function. Unfortunately, this means I am potentially inflating the numbers as I may be counting more than I should. Fortunately, since we're computer scientists and not mathematicians, we don't have to treat Big O as exact science. This means that when we're investigating algorithms, we're interested in the *approximate* complexity, which is why we use common classifications such as `O(n²)` instead of `O(n² + 5 x n log n + 10 x n + 1000)`. While the latter is more accurate, the prior gives us an easier understanding of the time complexity of an algorithm.
+
+Moreover, when we calculate the output of these formulae with a large value for n (which is what we're interested in anyway), you'll see that both formulas produce [nearly the same output](https://www.wolframalpha.com/input/?i=plot+n%C2%B2+%2B+5+*+n+*+log2%28n%29+%2B+10+*+n+%2B+1000+and+n%C2%B2+from+n+%3D+1000+to+n+%3D+10000). For example, `n = 10000` gives us a value of `100000000` for the first formula and `100765385` for the second formula, which is less than one percent difference. When using Big O we're generally interested in order of magnitudes. The question we're asking ourselves is not "Will this algorithm take one second or two seconds to complete?", but instead "Will this algorithm take one second or one *decade* to complete?".
+
+## A word about performance
+Please note that while time complexity is an important performance aspect of an algorithm, it's not the only one. There are many other factors that determine the actual performance of an algorithm, such as:
+* Cost of functions such as comparing, swapping, allocating, shifting and whatever else an algorithm does to get its job done;
+* Cost of recursion for recursive algorithms;
+* Characteristics of the data set, such as its size, its datatype and whether it's already partially sorted;
+* The language and framework in which the algorithm was implemented;
+* The hardware the algorithm runs on;
+* Many other (often invisible) aspects related to the environment such as the operating system, the hypervisor if present, CPU contention in shared environments, automatic optimizations such as speculative execution, multi-core versus hyper-threading, anti-virus software and so on.
+
+You've finished this section.
+
+[Cool, now show me some examples](/demo) | [I want to try this for myself](/live)
