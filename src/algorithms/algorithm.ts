@@ -1,24 +1,25 @@
-import {Complexity} from "../complexities";
+import { Complexity } from "../complexities"
 
 export default abstract class Algorithm {
-    private _operations!: number
+  private operations!: number
 
-    public executeAndCount(array: number[]): number {
-        this._operations = 0
-        try {
-            this.execute(array)
-        } catch{}
-        return this._operations
+  public executeAndCount(array: number[]): number {
+    this.operations = 0
+    try {
+      this.execute(array)
+    } catch {
+      // continue regardless of error
     }
+    return this.operations
+  }
 
-    protected incrementOpCounter(): void {
-        this._operations++
-    }
+  protected incrementOpCounter(): void {
+    this.operations++
+  }
 
-    abstract readonly name: string
-    abstract readonly timeComplexityBest: Complexity
-    abstract readonly timeComplexityAverage: Complexity
-    abstract readonly timeComplexityWorst: Complexity
-
-    abstract execute(array: number[]): void
+  abstract readonly name: string
+  abstract readonly timeComplexityBest: Complexity
+  abstract readonly timeComplexityAverage: Complexity
+  abstract readonly timeComplexityWorst: Complexity
+  abstract execute(array: number[]): void
 }

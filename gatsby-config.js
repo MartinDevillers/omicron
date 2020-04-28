@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 require(`dotenv`).config({
   path: `.env`,
 })
@@ -53,7 +54,7 @@ module.exports = {
             url: `https://github.com/MartinDevillers/omicron/`,
           },
         ],
-        feedTitle: 'Big O Visualizer by Martin Devillers'
+        feedTitle: `Big O Visualizer by Martin Devillers`,
       },
     },
     {

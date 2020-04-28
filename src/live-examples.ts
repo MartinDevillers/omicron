@@ -1,12 +1,12 @@
 export interface LiveExample {
-    readonly name: string,
-    readonly code: string
+  readonly name: string
+  readonly code: string
 }
 
 const examples: LiveExample[] = [
-    {
-        name: 'Awesome Sort',
-        code: `class AwesomeSort extends Algorithm {
+  {
+    name: "Awesome Sort",
+    code: `class AwesomeSort extends Algorithm {
 
     constructor() {
         this.name = "Awesome Sort" // Ok, it's actually just Bubble Sort.
@@ -54,9 +54,11 @@ render(
         <AnalysisSeries algorithms={algorithms} dataSets={dataSets}/>
     </ComplexityChart>
 )
-`},{
-        name: 'Demo Charts',
-        code: `render(
+`,
+  },
+  {
+    name: "Demo Charts",
+    code: `render(
     <div>
       <ComplexityChart title="Time complexity of sorting algorithms on a random list of numbers">
           <ComplexitySeries/>
@@ -78,9 +80,11 @@ render(
         <AnalysisSeries algorithms={[Algorithms.mergeSort, Algorithms.timSort, Algorithms.heapSort]} dataSets={DataSets.all} scatter={true}/>
       </ComplexityChart>
     </div>
-)`}, {
-        name: 'Fibonacci Set',
-        code: `
+)`,
+  },
+  {
+    name: "Fibonacci Set",
+    code: `
 const fibonacciSet = {
     name: 'Fibonacci',
     generate: (num) => {
@@ -100,9 +104,11 @@ render(
         <ComplexitySeries/>
         <AnalysisSeries algorithms={[Algorithms.timSort]} dataSets={[DataSets.random, DataSets.sorted, fibonacciSet]}/>
     </ComplexityChart>
-)`}, {
-    name: 'Improved Quick Sort',
-        code: `class ImprovedQuickSort extends Algorithm {
+)`,
+  },
+  {
+    name: "Improved Quick Sort",
+    code: `class ImprovedQuickSort extends Algorithm {
 
     constructor() {
         this.name = "Improved Quick Sort"
@@ -165,8 +171,8 @@ render(
         <ComplexitySeries/>
         <AnalysisSeries algorithms={[new ImprovedQuickSort(), Algorithms.quickSort]} dataSets={DataSets.all}/>
     </ComplexityChart>
-)`
-    }
+)`,
+  },
 ]
 
 export default examples
