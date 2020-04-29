@@ -1,7 +1,7 @@
 /** @jsx jsx */
-import { jsx, Styled, Theme } from "theme-ui"
-import { alpha } from "@theme-ui/color"
+import { jsx, Styled } from "theme-ui"
 import { Algorithms } from "../algorithms"
+import getColorForComplexity from "../util/get-color-for-complexity"
 
 const rows = Algorithms.all.map((x) => (
   <Styled.tr key={x.name}>
@@ -9,8 +9,7 @@ const rows = Algorithms.all.map((x) => (
     <Styled.td
       sx={{
         color: "heading",
-        backgroundColor: (theme: Theme) =>
-          `${alpha(theme.colors.complexities[x.timeComplexityBest.rating], 0.6)(theme)}`,
+        backgroundColor: (theme) => getColorForComplexity(theme, x.timeComplexityBest),
       }}
     >
       <code>{x.timeComplexityBest.notation}</code>
@@ -18,8 +17,7 @@ const rows = Algorithms.all.map((x) => (
     <Styled.td
       sx={{
         color: "heading",
-        backgroundColor: (theme: Theme) =>
-          `${alpha(theme.colors.complexities[x.timeComplexityAverage.rating], 0.6)(theme)}`,
+        backgroundColor: (theme) => getColorForComplexity(theme, x.timeComplexityAverage),
       }}
     >
       <code>{x.timeComplexityAverage.notation}</code>
@@ -27,8 +25,7 @@ const rows = Algorithms.all.map((x) => (
     <Styled.td
       sx={{
         color: "heading",
-        backgroundColor: (theme: Theme) =>
-          `${alpha(theme.colors.complexities[x.timeComplexityWorst.rating], 0.6)(theme)}`,
+        backgroundColor: (theme) => getColorForComplexity(theme, x.timeComplexityWorst),
       }}
     >
       <code>{x.timeComplexityWorst.notation}</code>

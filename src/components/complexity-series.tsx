@@ -2,6 +2,7 @@ import { useThemeUI } from "theme-ui"
 import { AreaSeries } from "react-jsx-highcharts"
 import React from "react"
 import { Complexities } from "../complexities"
+import getColorForComplexity from "../util/get-color-for-complexity"
 
 const ComplexitySeries = () => {
   const { theme } = useThemeUI()
@@ -10,7 +11,7 @@ const ComplexitySeries = () => {
     <AreaSeries
       key={r.name}
       name={r.name}
-      color={theme.colors.complexities[r.rating]}
+      color={getColorForComplexity(theme, r)}
       notation={r.notation}
       data={xPoints.map((x) => ({ x, y: r.calculate(x) }))}
     />
