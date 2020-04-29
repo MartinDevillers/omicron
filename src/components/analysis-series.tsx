@@ -1,4 +1,4 @@
-import { ScatterSeries, ErrorBarSeries, ErrorBarPoint } from "react-jsx-highcharts"
+import { ScatterSeries, ErrorBarSeries } from "react-jsx-highcharts"
 import React from "react"
 import Highcharts from "highcharts"
 import addHighchartsMore from "highcharts/highcharts-more"
@@ -37,12 +37,13 @@ const AnalysisSeries = (props: AnalysisSeriesProps) =>
       if (props.showRange) series.push(errorSeries)
     }
     scatterSeries.props.data.push({ x: current.dataSetSize, y: current.actualOperations } as Highcharts.Point)
-    if (props.showRange)
+    if (props.showRange && errorSeries)
       errorSeries.props.data.push({
         x: current.dataSetSize,
         low: current.expectedOperationsBest,
         high: current.expectedOperationsWorst,
-      } as ErrorBarPoint)
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } as any) // @todo find a better solution for this
     return series
   }, [] as React.ReactElement<Highcharts.Series>[])
 
