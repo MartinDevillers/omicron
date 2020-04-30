@@ -18,8 +18,8 @@ export default class MergeSort extends Algorithm {
     }
 
     const mid = Math.floor(len / 2)
-    const left = array.slice(0, mid)
-    const right = array.slice(mid)
+    const left = this.slice(array, 0, mid)
+    const right = this.slice(array, mid)
 
     return this.merge(this.mergeSort(left), this.mergeSort(right))
   }
@@ -40,6 +40,15 @@ export default class MergeSort extends Algorithm {
       this.incrementOpCounter()
     }
 
-    return result.concat(left.slice(l)).concat(right.slice(r))
+    return result.concat(this.slice(left, l).concat(this.slice(right, r)))
+  }
+
+  slice(array: number[], start: number, end: number = array.length): number[] {
+    const copy = []
+    for (let i = start; i < end; i++) {
+      this.incrementOpCounter()
+      copy.push(array[i])
+    }
+    return copy
   }
 }
