@@ -1,0 +1,60 @@
+---
+title: Insertion Sort
+slug: "/sorting/insertion-sort"
+---
+
+Insertion Sort is a simple sorting algorithm that builds the final sorted array (or list) one item at a time.
+
+### Complexity
+
+Insertion Sort has a *linear* best-case time complexity, which can be tested using a list of numbers that's already sorted.
+
+<ComplexityChart title="Time complexity of Insertion Sort on a sorted list of numbers">
+    <ComplexitySeries/>
+    <AnalysisSeries algorithms={[Algorithms.insertionSort]} dataSets={[DataSets.sorted]}/>
+</ComplexityChart>
+
+Insertion Sort has a *quadratic* average-case time complexity, which can be tested using a random list of numbers.
+
+<ComplexityChart title="Time complexity of Insertion Sort on a random list of numbers">
+    <ComplexitySeries/>
+    <AnalysisSeries algorithms={[Algorithms.insertionSort]} dataSets={[DataSets.random]}/>
+</ComplexityChart>
+
+Insertion Sort has a *quadratic* worst-case time complexity, which can be tested using a reversed list of numbers.
+
+<ComplexityChart title="Time complexity of Insertion Sort on a reversed list of numbers">
+    <ComplexitySeries/>
+    <AnalysisSeries algorithms={[Algorithms.insertionSort]} dataSets={[DataSets.reversed]}/>
+</ComplexityChart>
+
+Note that the number of operations required is higher (roughly double) when compared to the average-case.
+
+## Algorithm
+
+Below the implementation of Insertion Sort as used on this page.
+
+```ts:title=src/algorithms/insertion-sort.ts
+export default class InsertionSort extends Algorithm {
+  name = "Insertion Sort"
+  timeComplexityBest = Complexities.linear
+  timeComplexityAverage = Complexities.quadratic
+  timeComplexityWorst = Complexities.quadratic
+
+  execute(array: number[]): void {
+    const len = array.length
+    for (let i = 1; i < len; i++) {
+      const key = array[i]
+      let j = i - 1
+      while (j >= 0 && array[j] > key) {
+        array[j + 1] = array[j]
+        j -= 1
+        this.incrementOpCounter()
+      }
+      array[j + 1] = key
+      this.incrementOpCounter()
+    }
+  }
+}
+```
+

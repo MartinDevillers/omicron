@@ -1,0 +1,61 @@
+---
+title: Bubble Sort
+slug: "/sorting/bubble-sort"
+---
+
+Bubble sort, sometimes referred to as sinking sort, is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted. The algorithm, which is a comparison sort, is named for the way smaller or larger elements "bubble" to the top of the list.
+
+### Complexity
+
+Bubble Sort has a *linear* best-case time complexity, which can be tested using a list of numbers that's already sorted.
+
+<ComplexityChart title="Time complexity of Bubble Sort on a sorted list of numbers">
+    <ComplexitySeries/>
+    <AnalysisSeries algorithms={[Algorithms.bubbleSort]} dataSets={[DataSets.sorted]}/>
+</ComplexityChart>
+
+Bubble Sort has a *quadratic* average-case time complexity, which can be tested using a random list of numbers.
+
+<ComplexityChart title="Time complexity of Bubble Sort on a random list of numbers">
+    <ComplexitySeries/>
+    <AnalysisSeries algorithms={[Algorithms.bubbleSort]} dataSets={[DataSets.random]}/>
+</ComplexityChart>
+
+Bubble Sort has a *quadratic* worst-case time complexity, which can be tested using a reversed list of numbers.
+
+<ComplexityChart title="Time complexity of Bubble Sort on a reversed list of numbers">
+    <ComplexitySeries/>
+    <AnalysisSeries algorithms={[Algorithms.bubbleSort]} dataSets={[DataSets.reversed]}/>
+</ComplexityChart>
+
+## Algorithm
+
+Below the implementation of Bubble Sort as used on this page.
+
+```ts:title=src/algorithms/bubble-sort.ts
+export default class BubbleSort extends Algorithm {
+  name = "Bubble Sort"
+  timeComplexityBest = Complexities.linear
+  timeComplexityAverage = Complexities.quadratic
+  timeComplexityWorst = Complexities.quadratic
+
+  execute(array: number[]): void {
+    const len = array.length
+    let swapped
+    do {
+      this.incrementOpCounter()
+      swapped = false
+      for (let i = 0; i < len; i++) {
+        this.incrementOpCounter()
+        if (array[i] > array[i + 1]) {
+          const tmp = array[i]
+          array[i] = array[i + 1]
+          array[i + 1] = tmp
+          swapped = true
+        }
+      }
+    } while (swapped)
+  }
+}
+```
+

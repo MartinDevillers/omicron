@@ -1,0 +1,66 @@
+---
+title: Merge Sort
+slug: "/sorting/merge-sort"
+---
+
+Merge sort is an efficient, general-purpose, comparison-based, divide and conquer sorting algorithm.
+
+### Complexity
+
+Merge Sort has a *linearithmic* time complexity for all possible cases.
+
+<ComplexityChart title="Time complexity of Merge Sort on a variety of lists of numbers">
+    <ComplexitySeries/>
+    <AnalysisSeries algorithms={[Algorithms.mergeSort]} dataSets={DataSets.all}/>
+</ComplexityChart>
+
+## Algorithm
+
+Below the implementation of Merge Sort as used on this page.
+
+```ts:title=src/algorithms/merge-sort.ts
+export default class MergeSort extends Algorithm {
+  name = "Merge Sort"
+  timeComplexityBest = Complexities.linearithmic
+  timeComplexityAverage = Complexities.linearithmic
+  timeComplexityWorst = Complexities.linearithmic
+
+  execute(array: number[]): void {
+    this.mergeSort(array)
+  }
+
+  mergeSort(array: number[]): number[] {
+    this.incrementOpCounter()
+    const len = array.length
+    if (len < 2) {
+      return array
+    }
+
+    const mid = Math.floor(len / 2)
+    const left = array.slice(0, mid)
+    const right = array.slice(mid)
+
+    return this.merge(this.mergeSort(left), this.mergeSort(right))
+  }
+
+  merge(left: number[], right: number[]): number[] {
+    const leftLen = left.length
+    const rightLen = right.length
+    let l = 0
+    let r = 0
+    const result = []
+
+    while (l < leftLen && r < rightLen) {
+      this.incrementOpCounter()
+      if (left[l] < right[r]) {
+        result.push(left[l++])
+      } else {
+        result.push(right[r++])
+      }
+    }
+
+    return result.concat(left.slice(l)).concat(right.slice(r))
+  }
+}
+```
+

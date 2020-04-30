@@ -1,0 +1,48 @@
+---
+title: Selection Sort
+slug: "/sorting/selection-sort"
+---
+
+Selection Sort is an in-place comparison sorting algorithm. The algorithm divides the input list into two parts: a sorted sublist of items which is built up from left to right at the front (left) of the list and a sublist of the remaining unsorted items that occupy the rest of the list. Initially, the sorted sublist is empty and the unsorted sublist is the entire input list. The algorithm proceeds by finding the smallest (or largest, depending on sorting order) element in the unsorted sublist, exchanging (swapping) it with the leftmost unsorted element (putting it in sorted order), and moving the sublist boundaries one element to the right.
+
+### Complexity
+
+Selection Sort has a *quadratic* time complexity for all possible cases.
+
+<ComplexityChart title="Time complexity of Selection Sort on various lists of numbers">
+    <ComplexitySeries/>
+    <AnalysisSeries algorithms={[Algorithms.selectionSort]} dataSets={DataSets.all}/>
+</ComplexityChart>
+
+## Algorithm
+
+Below the implementation of Selection Sort as used on this page.
+
+```ts:title=src/algorithms/selection-sort.ts
+export default class SelectionSort extends Algorithm {
+  name = "Selection Sort"
+  timeComplexityBest = Complexities.quadratic
+  timeComplexityAverage = Complexities.quadratic
+  timeComplexityWorst = Complexities.quadratic
+
+  execute(array: number[]): void {
+    const len = array.length
+    for (let i = 0; i < len; i++) {
+      this.incrementOpCounter()
+      let min = i
+      for (let j = i + 1; j < len; j++) {
+        this.incrementOpCounter()
+        if (array[min] > array[j]) {
+          min = j
+        }
+      }
+      if (min !== i) {
+        const tmp = array[i]
+        array[i] = array[min]
+        array[min] = tmp
+      }
+    }
+  }
+}
+```
+

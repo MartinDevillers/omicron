@@ -1,0 +1,77 @@
+---
+title: Quick Sort
+slug: "/sorting/quick-sort"
+---
+
+Quicksort is a divide-and-conquer sorting algorithm. It works by selecting a 'pivot' element from the array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. The sub-arrays are then sorted recursively. This can be done in-place, requiring small additional amounts of memory to perform the sorting.
+
+### Complexity
+
+Quick Sort has a *linearithmic* best and average-case time complexity, which can be tested using a random list of numbers.
+
+<ComplexityChart title="Time complexity of Quick Sort on a random list of numbers">
+    <ComplexitySeries/>
+    <AnalysisSeries algorithms={[Algorithms.quickSort]} dataSets={[DataSets.random]}/>
+</ComplexityChart>
+
+Quick Sort has a *quadratic* worst-case time complexity, which can be tested using a **sorted** (yes, that's right) list of numbers.
+
+<ComplexityChart title="Time complexity of Quick Sort on a sorted list of numbers">
+    <ComplexitySeries/>
+    <AnalysisSeries algorithms={[Algorithms.quickSort]} dataSets={[DataSets.sorted]}/>
+</ComplexityChart>
+
+Fortunately, because Quick Sort performs so well on randomly sorted lists, the previous case can be easily mitigated by randomizing the input before executing the actual algorithm. Another solution is to change the pivot selection algorithm. Modern versions of Quick Sort use intelligent pivot selection algorithms in order to avoid the worst-case scenario in common data sets (e.g. sorted; reversed). However, even with these improved algorithms, it's always possible to construct an input that will produce worst-case performance.
+
+<ComplexityChart title="Time complexity of Quick Sort on a several blended lists of numbers">
+    <ComplexitySeries/>
+    <AnalysisSeries algorithms={[Algorithms.quickSort]} dataSets={DataSets.repeat(DataSets.blender, 3, true)} scatter={true} sizes={[1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3500, 4000, 4500, 5000]}/>
+</ComplexityChart>
+
+## Algorithm
+
+Below the implementation of Quick Sort as used on this page.
+
+```ts:title=src/algorithms/quick-sort.ts
+export default class QuickSort extends Algorithm {
+  name = "Quick Sort"
+  timeComplexityBest = Complexities.linearithmic
+  timeComplexityAverage = Complexities.linearithmic
+  timeComplexityWorst = Complexities.quadratic
+
+  execute(array: number[]): void {
+    this.quickSort(array)
+  }
+
+  swap(array: number[], i: number, j: number): void {
+    const tmp = array[i]
+    array[i] = array[j]
+    array[j] = tmp
+  }
+
+  partition(array: number[], left: number, right: number): number {
+    let q = left
+    let i
+    for (i = left; i < right; i++) {
+      if (array[i] < array[right]) {
+        this.swap(array, i, q)
+        q++
+      }
+      this.incrementOpCounter()
+    }
+    this.swap(array, i, q)
+    return q
+  }
+
+  quickSort(array: number[], left = 0, right: number = array.length - 1): number[] {
+    this.incrementOpCounter()
+    if (left < right) {
+      const pivot = this.partition(array, left, right)
+      this.quickSort(array, left, pivot - 1)
+      this.quickSort(array, pivot + 1, right)
+    }
+    return array
+  }
+}
+```
+

@@ -3,9 +3,13 @@ import { jsx, Styled } from "theme-ui"
 import { Algorithms } from "../algorithms"
 import getColorForComplexity from "../util/get-color-for-complexity"
 
+const linkify = (name: string) => `/sorting/${name.toLowerCase().replace(" ", "-")}`
+
 const rows = Algorithms.all.map((x) => (
   <Styled.tr key={x.name}>
-    <Styled.td>{x.name}</Styled.td>
+    <Styled.td>
+      <Styled.a href={linkify(x.name)}>{x.name}</Styled.a>
+    </Styled.td>
     <Styled.td
       sx={{
         color: "heading",

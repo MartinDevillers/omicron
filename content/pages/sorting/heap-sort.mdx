@@ -1,0 +1,78 @@
+---
+title: Heap Sort
+slug: "/sorting/heap-sort"
+---
+
+Heapsort is a comparison-based sorting algorithm. Heapsort can be thought of as an improved selection sort: like selection sort, heapsort divides its input into a sorted and an unsorted region, and it iteratively shrinks the unsorted region by extracting the largest element from it and inserting it into the sorted region. Unlike selection sort, heapsort does not waste time with a linear-time scan of the unsorted region; rather, heap sort maintains the unsorted region in a heap data structure to more quickly find the largest element in each step.
+
+### Complexity
+
+Heap Sort has a *linearithmic* time complexity for most common cases.
+
+<ComplexityChart title="Time complexity of Heap Sort on a variety of lists of numbers">
+    <ComplexitySeries/>
+    <AnalysisSeries algorithms={[Algorithms.heapSort]} dataSets={[DataSets.random, DataSets.sorted, DataSets.reversed, DataSets.millions, DataSets.zigzag, DataSets.sawtooth, DataSets.semiSorted]}/>
+</ComplexityChart>
+
+Heap Sort performs (close to) *linear*, which is better than *linearithmic*, in one specific case: when the input list contains (large series of) identical numbers.
+
+<ComplexityChart title="Time complexity of Heap Sort on a list of identical numbers">
+    <ComplexitySeries/>
+    <AnalysisSeries algorithms={[Algorithms.heapSort]} dataSets={[DataSets.same, DataSets.zeroes, DataSets.combine(DataSets.same, DataSets.zeroes)]}/>
+</ComplexityChart>
+
+## Algorithm
+
+Below the implementation of Heap Sort as used on this page.
+
+```ts:title=src/algorithms/heap-sort.ts
+export default class HeapSort extends Algorithm {
+  name = "Heap Sort"
+  timeComplexityBest = Complexities.linearithmic
+  timeComplexityAverage = Complexities.linearithmic
+  timeComplexityWorst = Complexities.linearithmic
+
+  execute(array: number[]): void {
+    this.buildHeap(array)
+    for (let i = array.length - 1; i > 0; i--) {
+      this.swap(array, 0, i)
+      this.heapify(array, 0, i)
+    }
+  }
+
+  buildHeap(array: number[]) {
+    for (let i = Math.floor(array.length / 2); i >= 0; i--) {
+      this.incrementOpCounter()
+      this.heapify(array, i, array.length)
+    }
+  }
+
+  heapify(array: number[], i: number, length: number) {
+    this.incrementOpCounter()
+    const left = 2 * i + 1
+    const right = 2 * i + 2
+    let largest = i
+
+    if (left < length && array[left] > array[largest]) {
+      largest = left
+    }
+
+    if (right < length && array[right] > array[largest]) {
+      largest = right
+    }
+
+    if (largest !== i) {
+      this.swap(array, i, largest)
+      this.heapify(array, largest, length)
+    }
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  swap(array: number[], i: number, j: number): void {
+    const tmp = array[i]
+    array[i] = array[j]
+    array[j] = tmp
+  }
+}
+```
+

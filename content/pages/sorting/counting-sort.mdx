@@ -1,0 +1,81 @@
+---
+title: Counting Sort
+slug: "/sorting/counting-sort"
+---
+
+Counting sort is an integer sorting algorithm. That means it is specifically designed to sort lists consisting of (small) numbers. It operates by counting the number of objects that have each distinct key value, and using arithmetic on those counts to determine the positions of each key value in the output sequence.
+
+### Complexity
+
+Counting Sort has a *bilinear* time complexity for all cases. The amount of operations can be calculated by taking the length of the list `n` and the difference between the biggest and the smallest element of the list `k`. Adding these two variables gives us a bilinear time complexity of `O(n+k)`.
+
+This means that the run time is identical regardless whether the input is randomized, sorted or reversed, as both `n` and `k` remain the same.
+
+<ComplexityChart title="Time complexity of Counting Sort on a random, sorted and reversed list of numbers">
+    <ComplexitySeries/>
+    <AnalysisSeries algorithms={[Algorithms.countingSort]} dataSets={[DataSets.random, DataSets.sorted, DataSets.reversed]}/>
+</ComplexityChart>
+
+The run time improves when `k` is minimal, which is the case for lists of identical numbers.
+
+<ComplexityChart title="Time complexity of Counting Sort on a list of identical numbers">
+    <ComplexitySeries/>
+    <AnalysisSeries algorithms={[Algorithms.countingSort]} dataSets={[DataSets.zeroes, DataSets.same]}/>
+</ComplexityChart>
+
+In contrast, the run time worsens (drastically) when `k` is large. For instance, given a tiny array of just ten numbers, but where each number is a value between zero and a million, Counting Sort requires *millions* of operations to sort the array.
+
+<ComplexityChart title="Time complexity of Counting Sort on a list of high variance">
+    <ComplexitySeries/>
+    <AnalysisSeries algorithms={[Algorithms.countingSort]} dataSets={[DataSets.thousands, DataSets.millions]}/>
+</ComplexityChart>
+
+## Algorithm
+
+Below the implementation of Counting Sort as used on this page.
+
+```ts:title=src/algorithms/counting-sort.ts
+export default class CountingSort extends Algorithm {
+  name = "Counting Sort"
+  timeComplexityBest = Complexities.bilinear
+  timeComplexityAverage = Complexities.bilinear
+  timeComplexityWorst = Complexities.bilinear
+
+  execute(array: number[]): void {
+    let min = Number.MAX_VALUE
+    let max = Number.MIN_VALUE
+
+    for (let i = 0; i < array.length; i++) {
+      this.incrementOpCounter()
+      min = Math.min(min, array[i])
+      max = Math.max(max, array[i])
+    }
+
+    let i = min
+    let j = 0
+    const len = array.length
+    const count = []
+
+    for (i; i <= max; i++) {
+      this.incrementOpCounter()
+      count[i] = 0
+    }
+
+    for (i = 0; i < len; i++) {
+      this.incrementOpCounter()
+      count[array[i]] += 1
+    }
+
+    for (i = min; i <= max; i++) {
+      this.incrementOpCounter()
+      while (count[i] > 0) {
+        this.incrementOpCounter()
+        array[j] = i
+        j++
+        count[i]--
+      }
+    }
+  }
+}
+```
+
