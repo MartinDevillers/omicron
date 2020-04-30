@@ -140,7 +140,7 @@ export default class TimSort extends Algorithm {
     let r = 0
 
     while (n >= TimSort.DEFAULT_MIN_MERGE) {
-      // this.incrementOpCounter();
+      this.incrementOpCounter()
       r |= n & 1
       n >>= 1
     }
@@ -169,7 +169,7 @@ export default class TimSort extends Algorithm {
     // Descending
     if (compare(array[runHi++], array[lo]) < 0) {
       while (runHi < hi && compare(array[runHi], array[runHi - 1]) < 0) {
-        // this.incrementOpCounter();
+        this.incrementOpCounter()
         runHi++
       }
 
@@ -177,7 +177,7 @@ export default class TimSort extends Algorithm {
       // Ascending
     } else {
       while (runHi < hi && compare(array[runHi], array[runHi - 1]) >= 0) {
-        // this.incrementOpCounter();
+        this.incrementOpCounter()
         runHi++
       }
     }
@@ -196,7 +196,7 @@ export default class TimSort extends Algorithm {
     hi--
 
     while (lo < hi) {
-      // this.incrementOpCounter();
+      this.incrementOpCounter()
       const t = array[lo]
       array[lo++] = array[hi]
       array[hi--] = t
@@ -219,7 +219,7 @@ export default class TimSort extends Algorithm {
     }
 
     for (; start < hi; start++) {
-      // this.incrementOpCounter();
+      this.incrementOpCounter()
       const pivot = array[start]
 
       // Ranges of the array where pivot belongs
@@ -231,7 +231,7 @@ export default class TimSort extends Algorithm {
        *   pivot <  array[i] for i in  in [right, start)
        */
       while (left < right) {
-        // this.incrementOpCounter();
+        this.incrementOpCounter()
         const mid = (left + right) >>> 1
 
         if (compare(pivot, array[mid]) < 0) {
@@ -260,7 +260,7 @@ export default class TimSort extends Algorithm {
           break
         default:
           while (n > 0) {
-            // this.incrementOpCounter();
+            this.incrementOpCounter()
             array[left + n] = array[left + n - 1]
             n--
           }
@@ -292,7 +292,7 @@ export default class TimSort extends Algorithm {
       maxOffset = length - hint
 
       while (offset < maxOffset && compare(value, array[start + hint + offset]) > 0) {
-        // this.incrementOpCounter();
+        this.incrementOpCounter()
         lastOffset = offset
         offset = (offset << 1) + 1
 
@@ -313,7 +313,7 @@ export default class TimSort extends Algorithm {
     } else {
       maxOffset = hint + 1
       while (offset < maxOffset && compare(value, array[start + hint - offset]) <= 0) {
-        // this.incrementOpCounter();
+        this.incrementOpCounter()
         lastOffset = offset
         offset = (offset << 1) + 1
 
@@ -339,7 +339,7 @@ export default class TimSort extends Algorithm {
      */
     lastOffset++
     while (lastOffset < offset) {
-      // this.incrementOpCounter();
+      this.incrementOpCounter()
       const m = lastOffset + ((offset - lastOffset) >>> 1)
 
       if (compare(value, array[start + m]) > 0) {
@@ -373,7 +373,7 @@ export default class TimSort extends Algorithm {
       maxOffset = hint + 1
 
       while (offset < maxOffset && compare(value, array[start + hint - offset]) < 0) {
-        // this.incrementOpCounter();
+        this.incrementOpCounter()
         lastOffset = offset
         offset = (offset << 1) + 1
 
@@ -396,7 +396,7 @@ export default class TimSort extends Algorithm {
       maxOffset = length - hint
 
       while (offset < maxOffset && compare(value, array[start + hint + offset]) >= 0) {
-        // this.incrementOpCounter();
+        this.incrementOpCounter()
         lastOffset = offset
         offset = (offset << 1) + 1
 
@@ -423,7 +423,7 @@ export default class TimSort extends Algorithm {
     lastOffset++
 
     while (lastOffset < offset) {
-      // this.incrementOpCounter();
+      this.incrementOpCounter()
       const m = lastOffset + ((offset - lastOffset) >>> 1)
 
       if (compare(value, array[start + m]) < 0) {
@@ -487,7 +487,7 @@ export default class TimSort extends Algorithm {
      */
     mergeRuns() {
       while (this.stackSize > 1) {
-        // this.outer._operations++;
+        this.outer.incrementOpCounter()
         let n = this.stackSize - 2
 
         if (
@@ -509,7 +509,7 @@ export default class TimSort extends Algorithm {
      */
     forceMergeRuns() {
       while (this.stackSize > 1) {
-        // this.outer._operations++;
+        this.outer.incrementOpCounter()
         let n = this.stackSize - 2
 
         if (n > 0 && this.runLength[n - 1] < this.runLength[n + 1]) {
@@ -597,7 +597,7 @@ export default class TimSort extends Algorithm {
       let i = 0
 
       for (i = 0; i < length1; i++) {
-        // this.outer._operations++;
+        this.outer.incrementOpCounter()
         tmp[i] = array[start1 + i]
       }
 
@@ -609,7 +609,7 @@ export default class TimSort extends Algorithm {
 
       if (--length2 === 0) {
         for (i = 0; i < length1; i++) {
-          // this.outer._operations++;
+          this.outer.incrementOpCounter()
           array[dest + i] = tmp[cursor1 + i]
         }
         return
@@ -617,7 +617,7 @@ export default class TimSort extends Algorithm {
 
       if (length1 === 1) {
         for (i = 0; i < length2; i++) {
-          // this.outer._operations++;
+          this.outer.incrementOpCounter()
           array[dest + i] = array[cursor2 + i]
         }
         array[dest + length2] = tmp[cursor1]
@@ -627,13 +627,13 @@ export default class TimSort extends Algorithm {
       let { minGallop } = this
 
       while (true) {
-        // this.outer._operations++;
+        this.outer.incrementOpCounter()
         let count1 = 0
         let count2 = 0
         let exit = false
 
         do {
-          // this.outer._operations++;
+          this.outer.incrementOpCounter()
           if (compare(array[cursor2], tmp[cursor1]) < 0) {
             array[dest++] = array[cursor2++]
             count2++
@@ -659,12 +659,12 @@ export default class TimSort extends Algorithm {
         }
 
         do {
-          // this.outer._operations++;
+          this.outer.incrementOpCounter()
           count1 = this.outer.gallopRight(array[cursor2], tmp, cursor1, length1, 0, compare)
 
           if (count1 !== 0) {
             for (i = 0; i < count1; i++) {
-              // this.outer._operations++;
+              this.outer.incrementOpCounter()
               array[dest + i] = tmp[cursor1 + i]
             }
 
@@ -688,7 +688,7 @@ export default class TimSort extends Algorithm {
 
           if (count2 !== 0) {
             for (i = 0; i < count2; i++) {
-              // this.outer._operations++;
+              this.outer.incrementOpCounter()
               array[dest + i] = array[cursor2 + i]
             }
 
@@ -730,7 +730,7 @@ export default class TimSort extends Algorithm {
 
       if (length1 === 1) {
         for (i = 0; i < length2; i++) {
-          // this.outer._operations++;
+          this.outer.incrementOpCounter()
           array[dest + i] = array[cursor2 + i]
         }
         array[dest + length2] = tmp[cursor1]
@@ -738,7 +738,7 @@ export default class TimSort extends Algorithm {
         throw new Error("mergeLow preconditions were not respected")
       } else {
         for (i = 0; i < length1; i++) {
-          // this.outer._operations++;
+          this.outer.incrementOpCounter()
           array[dest + i] = tmp[cursor1 + i]
         }
       }
@@ -764,7 +764,7 @@ export default class TimSort extends Algorithm {
       let i = 0
 
       for (i = 0; i < length2; i++) {
-        // this.outer._operations++;
+        this.outer.incrementOpCounter()
         tmp[i] = array[start2 + i]
       }
 
@@ -780,7 +780,7 @@ export default class TimSort extends Algorithm {
         customCursor = dest - (length2 - 1)
 
         for (i = 0; i < length2; i++) {
-          // this.outer._operations++;
+          this.outer.incrementOpCounter()
           array[customCursor + i] = tmp[i]
         }
 
@@ -794,7 +794,7 @@ export default class TimSort extends Algorithm {
         customCursor = cursor1 + 1
 
         for (i = length1 - 1; i >= 0; i--) {
-          // this.outer._operations++;
+          this.outer.incrementOpCounter()
           array[customDest + i] = array[customCursor + i]
         }
 
@@ -805,13 +805,13 @@ export default class TimSort extends Algorithm {
       let { minGallop } = this
 
       while (true) {
-        // this.outer._operations++;
+        this.outer.incrementOpCounter()
         let count1 = 0
         let count2 = 0
         let exit = false
 
         do {
-          // this.outer._operations++;
+          this.outer.incrementOpCounter()
           if (compare(tmp[cursor2], array[cursor1]) < 0) {
             array[dest--] = array[cursor1--]
             count1++
@@ -847,7 +847,7 @@ export default class TimSort extends Algorithm {
             customCursor = cursor1 + 1
 
             for (i = count1 - 1; i >= 0; i--) {
-              // this.outer._operations++;
+              this.outer.incrementOpCounter()
               array[customDest + i] = array[customCursor + i]
             }
 
@@ -874,7 +874,7 @@ export default class TimSort extends Algorithm {
             customCursor = cursor2 + 1
 
             for (i = 0; i < count2; i++) {
-              // this.outer._operations++;
+              this.outer.incrementOpCounter()
               array[customDest + i] = tmp[customCursor + i]
             }
 
@@ -918,7 +918,7 @@ export default class TimSort extends Algorithm {
         customCursor = cursor1 + 1
 
         for (i = length1 - 1; i >= 0; i--) {
-          // this.outer._operations++;
+          this.outer.incrementOpCounter()
           array[customDest + i] = array[customCursor + i]
         }
 
@@ -928,7 +928,7 @@ export default class TimSort extends Algorithm {
       } else {
         customCursor = dest - (length2 - 1)
         for (i = 0; i < length2; i++) {
-          // this.outer._operations++;
+          this.outer.incrementOpCounter()
           array[customCursor + i] = tmp[i]
         }
       }
@@ -946,30 +946,6 @@ export default class TimSort extends Algorithm {
    *     comparator.
    */
   sort(array: number[], compare: Comparer = this.alphabeticalCompare.bind(this), lo = 0, hi: number = array.length) {
-    // if (!Array.isArray(array)) {
-    //     throw new TypeError('Can only sort arrays');
-    // }
-    //
-    // /*
-    //  * Handle the case where a comparison function is not provided. We do
-    //  * lexicographic sorting
-    //  */
-    // if (!compare) {
-    //     compare = TimSort.alphabeticalCompare;
-    //
-    // } else if (typeof compare !== 'function') {
-    //     hi = lo;
-    //     lo = compare;
-    //     compare = TimSort.alphabeticalCompare;
-    // }
-    //
-    // if (!lo) {
-    //     lo = 0;
-    // }
-    // if (!hi) {
-    //     hi = array.length;
-    // }
-
     let remaining = hi - lo
 
     // The array is already sorted
@@ -990,7 +966,7 @@ export default class TimSort extends Algorithm {
     const minRun = this.minRunLength(remaining)
 
     do {
-      // this.incrementOpCounter();
+      this.incrementOpCounter()
       runLength = this.makeAscendingRun(array, lo, hi, compare)
       if (runLength < minRun) {
         let force = remaining
