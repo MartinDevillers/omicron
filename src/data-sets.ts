@@ -114,6 +114,17 @@ export abstract class DataSets {
       generate: (n) => left.generate(n * leftRatio).concat(right.generate(n * rightRatio)),
     }
   }
+
+  static repeat(dataSet: DataSet, times: number, group = false) {
+    const dataSets = []
+    for (let i = 0; i < times; i++) {
+      dataSets.push({
+        name: group ? dataSet.name : `${dataSet.name} ${i}`,
+        generate: dataSet.generate,
+      })
+    }
+    return dataSets
+  }
 }
 
 export default DataSets
