@@ -111,7 +111,7 @@ export abstract class DataSets {
     const rightRatio = 1 - ratio
     return {
       name,
-      generate: (n) => left.generate(n * leftRatio).concat(right.generate(n * rightRatio)),
+      generate: (n) => left.generate(Math.floor(n * leftRatio)).concat(right.generate(Math.floor(n * rightRatio))),
     }
   }
 
