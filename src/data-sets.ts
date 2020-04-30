@@ -85,6 +85,15 @@ export abstract class DataSets {
     DataSets.thousands,
     DataSets.millions,
   ]
+
+  static combine(left: DataSet, right: DataSet, ratio = 0.5, name = `${left.name} - ${right.name}`): DataSet {
+    const leftRatio = ratio
+    const rightRatio = 1 - ratio
+    return {
+      name,
+      generate: (n) => left.generate(n * leftRatio).concat(right.generate(n * rightRatio)),
+    }
+  }
 }
 
 export default DataSets
