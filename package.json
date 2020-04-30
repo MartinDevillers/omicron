@@ -26,6 +26,7 @@
     "gatsby-plugin-netlify": "^2.2.4",
     "gatsby-plugin-offline": "^2.2.4",
     "gatsby-plugin-sitemap": "^2.3.6",
+    "gatsby-remark-copy-linked-files": "^2.3.1",
     "highcharts": "^8.0.4",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",

@@ -55,6 +55,7 @@ module.exports = {
           },
         ],
         feedTitle: `Big O Visualizer by Martin Devillers`,
+        mdx: false,
       },
     },
     {
@@ -90,6 +91,23 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-netlify`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 960,
+              quality: 90,
+              linkImagesToOriginal: false,
+            },
+          },
+          `gatsby-remark-copy-linked-files`,
+        ],
+      },
+    },
     // `gatsby-plugin-webpack-bundle-analyser-v2`,
   ],
 }
