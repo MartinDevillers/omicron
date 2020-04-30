@@ -70,6 +70,25 @@ export abstract class DataSets {
     generate: (n) => Array.from({ length: n }, () => Math.floor(Math.random() * 1000000)),
   }
 
+  static readonly blender: DataSet = {
+    name: "Blender",
+    generate: (n) => {
+      const result = DataSets.random.generate(n)
+      if (n < 100) return result
+      const ingredients = DataSets.all.filter((x) => x.name !== "Blender")
+      const size = Math.floor(n / ingredients.length) + 1
+      for (let i = 0; i < ingredients.length; i++) {
+        const sub = ingredients[i].generate(n)
+        const start = Math.floor(Math.random() * n)
+        const end = Math.min(start + size, n)
+        for (let j = start; j < end; j++) {
+          result[j] = sub[j]
+        }
+      }
+      return result
+    },
+  }
+
   static readonly all: DataSet[] = [
     DataSets.random,
     DataSets.sorted,
@@ -84,6 +103,7 @@ export abstract class DataSets {
     DataSets.zeroes,
     DataSets.thousands,
     DataSets.millions,
+    DataSets.blender,
   ]
 
   static combine(left: DataSet, right: DataSet, ratio = 0.5, name = `${left.name} - ${right.name}`): DataSet {
