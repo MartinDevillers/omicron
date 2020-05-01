@@ -1,3 +1,6 @@
+// Tailwind: https://github.com/system-ui/theme-ui/blob/e5e68cdb64db5ce763f86f51311dbaa04780745d/packages/preset-tailwind/src/index.ts
+// Theme: https://github.com/LekoArts/gatsby-themes/blob/67a05ac3e1deaddfe38591739e7f50f56d49d109/themes/gatsby-theme-minimal-blog/src/gatsby-plugin-theme-ui/index.js
+
 import baseTheme from "@lekoarts/gatsby-theme-minimal-blog/src/gatsby-plugin-theme-ui"
 
 export default {
@@ -26,6 +29,29 @@ export default {
           excellent: "#2e552d",
         },
       },
+    },
+  },
+  icons: {
+    arrow: {
+      width: 4,
+      height: 4,
+      marginTop: "0.25rem",
+      borderRightWidth: "0.25rem",
+      borderRightStyle: "solid",
+      borderTopWidth: "0.25rem",
+      borderTopStyle: "solid",
+      borderColor: "secondary",
+      "&:hover": {
+        borderColor: "heading",
+      },
+    },
+    dot: {
+      width: 2,
+      height: 2,
+      marginY: 2,
+      marginX: 1,
+      backgroundColor: "secondary",
+      borderRadius: "50%",
     },
   },
 }
