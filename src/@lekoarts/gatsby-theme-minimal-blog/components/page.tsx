@@ -5,7 +5,7 @@ import { Link } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import SEO from "@lekoarts/gatsby-theme-minimal-blog/src/components/seo"
 import Layout from "./layout"
-import DoublyLinkedList from "../../../util/doubly-linked-list"
+import DoublyLinkedLoop from "../../../util/doubly-linked-loop"
 
 type PageProps = {
   data: {
@@ -19,7 +19,7 @@ type PageProps = {
 }
 
 // @todo hard coded until I figure out a better way to do this (maybe frontmatter prev/next properties?)
-const pages = new DoublyLinkedList([
+const pages = new DoublyLinkedLoop([
   "/docs",
   "/demo",
   "/sorting/bubble-sort",
@@ -34,7 +34,7 @@ const pages = new DoublyLinkedList([
   "/about",
 ])
 
-const PrevNextNav = (section: DoublyLinkedList<string>, slug: string) =>
+const PrevNextNav = (section: DoublyLinkedLoop<string>, slug: string) =>
   section.contains(slug) && (
     <Flex pt={[1, 2, 3]}>
       <TLink as={Link} sx={{ variant: `links.secondary` }} to={section.prev(slug)!} alt="Previous page">

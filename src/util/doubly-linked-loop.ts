@@ -4,7 +4,7 @@ interface Node<T> {
   next: Node<T>
 }
 
-export default class DoublyLinkedList<T> {
+export default class DoublyLinkedLoop<T> {
   root!: Node<T>
   length: number
 

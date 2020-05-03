@@ -1,0 +1,135 @@
+---
+title: Added previous page / next page navigation on all pages
+date: 2020-05-01
+description: Quickly browse the site with these cool CSS-only buttons
+tags:
+  - Change
+---
+
+With this change you'll see two arrows at the top right of the screen, whenever you're on a page. These arrows are hyperlinks that allow you to navigate to the next or previous page. I've added these because they're handy for visitors who just want to browse the site's content without having to figure out the navigation structure.
+
+Curious about the implementation? Then read on!
+
+### CSS-only
+
+No images or inline vector data is used to render the arrows. In fact, it only took a few lines of (pseudo) CSS to create these:
+
+```ts:title=src/gatsby-plugin-theme-ui/index.ts
+arrow: {
+  width: 4,
+  height: 4,
+  marginTop: "0.25rem",
+  borderRightWidth: "0.25rem",
+  borderRightStyle: "solid",
+  borderTopWidth: "0.25rem",
+  borderTopStyle: "solid",
+  borderColor: "secondary",
+  "&:hover": {
+    borderColor: "heading",
+  },
+},
+```
+
+Basically the above styling creates a square element where the top and right edge have a thick border. In the TSX component template I add a `rotate(45deg)` or `rotate(225deg)` to rotate the whole thing so the arrow points in the right direction. The relevant snippet looks like this:
+
+```tsx:title=/src/@lekoarts/gatsby-theme-minimal-blog/components/page.tsx
+const PrevNextNav = (section: DoublyLinkedLoop<string>, slug: string) =>
+  section.contains(slug) && (
+    <Flex pt={[1, 2, 3]}>
+      <TLink as={Link} sx={{ variant: `links.secondary` }} to={section.prev(slug)!} alt="Previous page">
+        <div sx={{ variant: `icons.arrow`, transform: `rotate(225deg)` }} />
+      </TLink>
+      <div sx={{ variant: `icons.dot` }} />
+      <TLink as={Link} sx={{ variant: `links.secondary` }} to={section.next(slug)!} alt="Next page">
+        <div sx={{ variant: `icons.arrow`, transform: `rotate(45deg)` }} />
+      </TLink>
+    </Flex>
+  )
+```
+
+### Doubly Linked Loop
+
+In order for this feature to work, there needs to be some kind of data structure that helps me to figure out the next (or previous) page, given the current page the user is on. I choose a Doubly Linked Loop, which is a new structure I made up. It's essentially a regular [Doubly Linked List](https://en.wikipedia.org/wiki/Doubly_linked_list) but where the tail is always connected to the head. This property ensures I can blindly call `next` or `previous` on the structure, without having to worry that I'm going over some kind of edge. It also means the structure no longer has a clear beginning (headless) or end (tailless), which is why I choose to call it a Loop rather than a List. Internally, there's still a root, which is always the first element that was added.
+
+The final implementation looks like this:
+
+```ts:title=src/util/doubly-linked-loop.ts
+interface Node<T> {
+  value: T
+  prev: Node<T>
+  next: Node<T>
+}
+
+export default class DoublyLinkedLoop<T> {
+  root!: Node<T>
+  length: number
+
+  constructor(array: T[]) {
+    this.length = 0
+    array.forEach(this.add.bind(this))
+  }
+
+  add(item: T) {
+    const node = {
+      value: item,
+    } as Node<T>
+    if (this.length === 0) {
+      // eslint-disable-next-line no-multi-assign
+      node.prev = node.next = this.root = node
+    } else {
+      const last = this.root.prev
+      this.root.prev = node
+      last.next = node
+      node.prev = last
+      node.next = this.root
+    }
+    this.length++
+  }
+
+  find(item: T): Node<T> | undefined {
+    let node = this.root
+    for (let i = 0; i < this.length; i++) {
+      if (node.value === item) {
+        return node
+      }
+      node = node.next
+    }
+    return undefined
+  }
+
+  contains(item: T): boolean {
+    return this.find(item) !== undefined
+  }
+
+  next(item: T): T | undefined {
+    const node = this.find(item)
+    return node?.next?.value
+  }
+
+  prev(item: T): T | undefined {
+    const node = this.find(item)
+    return node?.prev?.value
+  }
+}
+```
+
+And the usage of this data structure looks like this:
+
+```tsx:title=/src/@lekoarts/gatsby-theme-minimal-blog/components/page.tsx
+const pages = new DoublyLinkedLoop([
+  "/docs",
+  "/demo",
+  "/sorting/bubble-sort",
+  "/sorting/selection-sort",
+  "/sorting/insertion-sort",
+  "/sorting/counting-sort",
+  "/sorting/quick-sort",
+  "/sorting/merge-sort",
+  "/sorting/heap-sort",
+  "/sorting/tim-sort",
+  "/live",
+  "/about",
+])
+```
+
+This wouldn't be the Big O Visualizer without me explaining the time complexity of the Doubly Linked Loop. The `add` method, which is the only mutation method available, has a *constant* time complexity: `O(1)`. All the query operations (`contains`, `prev` and `next`) use the `find` method internally, which has a worst-case *linear* time complexity: `O(n)`, where n represents the amount of elements in the loop. Since I'm not building Wikipedia the amount of elements (read: pages) will always be insignificant and thus I'm happy with a linear time complexity.
