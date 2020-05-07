@@ -19,7 +19,7 @@ export default function workerize(algorithm: Algorithm, workerFactory: () => Wor
   }
 
   const workerizedExecuteAndCount = async (array: number[]) => {
-    const shouldWorkerize = algorithm.timeComplexityWorst.calculate(array.length) !== -1 // @todo always true for now
+    const shouldWorkerize = algorithm.timeComplexityWorst.calculate(array.length) === -1 // @todo always false for now
     if (shouldWorkerize) {
       const workerAlgorithm = await getWorkerAlgorithm()
       const transferable = Float32Array.from(array)
