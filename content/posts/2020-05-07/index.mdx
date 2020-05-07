@@ -1,0 +1,156 @@
+---
+title: Moved Algorithms to Web Workers
+date: 2020-05-07
+description: Getting CPU-hungry JavaScript off the main thread
+tags:
+  - Change
+---
+
+The last few days I've been busy with the final major feature I wanted to build into this project: [Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API). Why is this relevant? Without Web Workers, all JavaScript inside the page runs on the browser's main thread. The main thread is where a browser processes user events and paints. By default, the browser uses a single thread to run all the JavaScript in your page, as well as to perform layout, reflows, and garbage collection. This means that long-running JavaScript functions can block the thread, leading to an unresponsive page and a bad user experience.
+
+In the context of this project, that long-running JavaScript would be the algorithms that are analyzed in order to generate the data required to draw the graph. Before this change, the page would simply "lock up" and wait until JavaScript has Bubble Sorted its way through all the data. This meant the page would not respond to any clicks. Worse, navigating quickly through the site could actually crash the browser. Yuck.
+
+So in order to circumvent this I use Web Workers to move the CPU-hungry JavaScript to the background and have the foreground wait (in a non-blocking manner) until the background threads are finished. As quoted from [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers): "Web Workers are a simple means for web content to run scripts in background threads".
+
+Personally, I wouldn't call Web Workers *simple*.
+
+Simple would be if I could just slap a special keyword like `background` or `worker` on any function and it would magically run on a different thread. This is definitely not the case with Web Workers (yet). Moreover, they don't naturally play well with the (arguably exotic) stack this project uses, because:
+
+* Web Workers are created from a separate hosted JavaScript file, whereas this project uses a single generated fat artifact.
+* Web Workers do **not** inherit any of the objects from the main thread, whereas this project uses a rich module oriented model.
+* Communication between the main thread and the Web Workers is limited to serializable data only, meaning this projects core types `Algorithm` and `DataSet` cannot be passed along.
+* Web Workers come with their own overhead, which can be greater than the gain from multi-threaded execution.
+
+In the rest of this post, I'll explain how I handled each of these issues.
+
+### Packages to the rescue
+
+The first challenge was to get Web Workers to run in the first place. Since this project uses Babel, Webpack and a bunch of other plugins to transpile and bundle all assets into a single JavaScript artifact, there is no straightforward way to separate a piece of the code-base so it can be used by a Web Worker. Luckily, there are several npm packages that address this exact issue (and more). [workerize](https://github.com/developit/workerize) and [comlink](https://github.com/GoogleChromeLabs/comlink) were created with the same philosophy: make the integration of Web Workers in a JavaScript/TypeScript heavy environment straightforward. They both offer a Webpack loader [workerize-loader](https://github.com/developit/workerize-loader) and [comlink-loader](https://github.com/GoogleChromeLabs/comlink-loader) that handles the generation of the worker bundles.
+
+Both offer an automatic way of *Web Workerizing* modules by renaming them from `my-amazing-module.js` to `my-amazing-module.worker.js`. Unfortunately, I couldn't get it with any of both loaders to work. `workerize-loader` did pick up the `*.worker.ts` files, but couldn't "see" the methods. After some Googling it was revealed that `workerize` only supports modules with functions and not classes. So I switched to `comlink-loader`, which supports both functions and classes. Unfortunately I couldn't autowire this package into my TypeScript set-up. In the end I ditched the automatic mode in favor of explicit mode. This also allows me to load modules side-by-side both in the regular way *and* in the Web Workerized way.
+
+### Workerize all the things
+
+Another major challenge was the question: what to web workerize? Specifically: Do I workerize the analysis for the entire chart, or for each individual algorithm or even each single run per algorithm. The more granular the task, the more workers will be spawned and the more we benefit from horizontal scaling (in theory at least). Initially, I decided to workerize the analyzer, because it is the single-point-of-entry for the whole analysis. This gives each chart its own dedicated worker that will handle all the data processing for that chart. More specifically, this means that the following function will be wrapped by `comlink`:
+
+```ts:title=src/analyzer.ts
+export async function analyze(
+  algorithms: Algorithm[],
+  dataSets: DataSet[],
+  sizes: number[] = logarithmics,
+  scatter = false
+): Promise<Analysis[]> {
+```
+
+One of the key features of packages like `workerize` or `comlink` is that they hide the whole `Worker.postMessage` and `Worker.onmessage` mechanism. They simply wrap the provided function and return a function with the same signature. Internally, a bespoke RPC-style implementation is used to send data in and out of the Web Worker. While this abstraction is great, it is also leaky:
+
+> Uncaught DOMException: Failed to execute 'postMessage' on 'Window': An object could not be cloned
+
+This cryptic error message is the result of an important limitation of Web Workers: you can only pass *serializable* data to a Web Worker. For those unfamiliar with the term, serialization is the process whereby an object or data structure is translated into a format suitable for transferal over a network, or storage (e.g. in an array buffer or file format). Most programming languages and frameworks support one or multiple serialization techniques. In the JavaScript world, the most used (de)serializer is `JSON.stringify` and `JSON.parse`, which turns a JavaScript object into a JSON-string and vis versa.
+
+In the above case both `Algorithm` and `DataSet` are classes that contain properties and methods, which means these objects cannot be (de)serialized without losing important parts of their model. Thus when these arguments are passed internally by `comlink` to the `Worker.postMessage` function, the browser protects us by throwing an exception.
+
+Since there is no way around this limitation I am left with two options:
+
+1. Refactor the function
+2. Workerize something else
+
+Since both `Algorithm` and `DataSet` are classes that are used throughout the project, I went with option 2.
+
+### Import... what exactly?
+
+My next target for workerization would be the `Algorithm.executeAndCount` function.
+
+```ts:title=src/algorithm/algorithm.ts
+public async executeAndCount(array: number[]): Promise<number> {
+```
+
+As you can see, this function's signature `number[] => number` consists of primitives that are suitable for serialization. In order to wrap this function, I let `comlink-loader` import the entire class like so:
+
+```ts:title=src/algorithm/index.ts
+import BubbleSortWorker from "comlink-loader!./bubble-sort"
+import CountingSortWorker from "comlink-loader!./counting-sort"
+import HeapSortWorker from "comlink-loader!./heap-sort"
+import InsertionSortWorker from "comlink-loader!./insertion-sort"
+import MergeSortWorker from "comlink-loader!./merge-sort"
+import QuickSortWorker from "comlink-loader!./quick-sort"
+import SelectionSortWorker from "comlink-loader!./selection-sort"
+import TimSortWorker from "comlink-loader!./tim-sort"
+```
+
+It may not look so [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) to do this for every single algorithm, but this is necessary in order to bundle the correct algorithm with the worker. After this I expected the various imports to be functionally symmetric to the original implementation.
+
+They were not.
+
+This is because `comlink-loader` imports a *factory* method, that can be used to get an instance of the module, where each instance is tied to its own worker. This is actually a powerful feature, because it allows you to control how many workers you want per module. `comlink-loader` also has a singleton-mode, where each module is always tied to one worker. Unfortunately this mode gave transpile-time errors. In the end I rolled my own wrapper function that takes an instance of `Algorithm` and applies the worker behavior to the `executeAndCount` function, which looks like this:
+
+```ts:title=src/algorithm/workerizer.ts
+export default function workerize(algorithm: Algorithm, workerFactory: () => Worker) {
+  let worker: Worker
+  const unworkerizedExecuteAndCount = algorithm.executeAndCount.bind(algorithm)
+
+  const getWorkerAlgorithm = async () => {
+    if (!worker) {
+      worker = workerFactory()
+    }
+    // eslint-disable-next-line new-cap
+    return new worker.default()
+  }
+
+  const workerizedExecuteAndCount = async (array: number[]) => {
+    const shouldWorkerize = algorithm.timeComplexityWorst.calculate(array.length) > 1000000
+    if (shouldWorkerize) {
+      const workerAlgorithm = await getWorkerAlgorithm()
+      const transferable = Float32Array.from(array)
+      return workerAlgorithm.executeAndCount(transfer(transferable, [transferable.buffer]))
+    }
+    return unworkerizedExecuteAndCount(array)
+  }
+
+  algorithm.executeAndCount = workerizedExecuteAndCount
+
+  return algorithm
+}
+```
+
+The `getWorkerAlgorithm` function creates a new worker-bound module, if it doesn't already exist. It then uses this worker to create a new instance of the specific algorithm's class. This code looks a bit wonky, but that's just how `comlink-loader` generates [wrapped classes](https://github.com/GoogleChromeLabs/comlink-loader#factory-mode-default).
+
+The interesting thing about `workerizedExecuteAndCount` is that it can decide whether or not to run the current invocation on the Web Worker (background) or on the main thread (foreground). It uses the size of the array (n) and the known worst-case time complexity to calculate the expected run time of the execution. If this run time exceeds a certain threshold (in this case a million operations), the calculation is executed using a Web Worker.
+
+### Where's the gain?
+
+After I tied this all together I expected my application to be faster.
+
+Yes and no.
+
+While the reported page load improved significantly (near instant), the charts actually took longer to render. I built a simple stopwatch using the [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API) to confirm my suspicion. Load times of the charts had doubled across the project! It would seem these Web Workers are somehow *slower* than the regular JavaScript execution engine on the main thread. On further inspection, I found out that Web Worker's come with their own overhead, which can be significant depending on how you treat them:
+
+* Each Web Worker is essentially its own independent environment, similar to an independent browser tab. This means that creating a Web Worker takes time especially if it needs to pull resources from a server.
+* Transferring data in and out of the Web Worker is an expensive operation if you're sending a lot of data.
+* The Web Worker is simply slower than the main thread. Granted that I may be doing something dumb, there are other engineers who've observed similar behavior [here](https://calvinmetcalf.com/post/55957954794/web-workers-are-slower-and-thats-ok), [here](https://www.loxodrome.io/post/web-worker-performance/) and [here](https://surma.dev/things/is-postmessage-slow/).
+
+Fortunately, the first point can be mitigated by *inlining* the Web Worker and the second point can be mitigated by using the [Transferable](https://developer.mozilla.org/en-US/docs/Web/API/Transferable) interface to transfer data. You can see the Transferable API in action below on lines 5 and 6.
+
+```ts:title=src/algorithm/workerizer.ts {5,6}
+  const workerizedExecuteAndCount = async (array: number[]) => {
+    const shouldWorkerize = algorithm.timeComplexityWorst.calculate(array.length) > 1000000
+    if (shouldWorkerize) {
+      const workerAlgorithm = await getWorkerAlgorithm()
+      const transferable = Float32Array.from(array)
+      return workerAlgorithm.executeAndCount(transfer(transferable, [transferable.buffer]))
+    }
+    return unworkerizedExecuteAndCount(array)
+  }
+```
+
+First the input array is copied to a `Float32Array`, which supports the `Transferable` interface. Second, `Comlink.transfer` is used to transfer the data to the Web Worker. Internally, this uses the second argument in `worker.postMessage(message, [transfer])`. The date is quite literally lift-and-shifted from the main thread to the worker thread, which means that after this operation the data is no longer available in the main thread. Obviously, a sorting algorithm that wipes the input data is useless, but since we're only interested in measuring the run time in this project this is an acceptable side effect.
+
+### Wrapping up
+
+Moving my CPU-hungry code to Web Workers wasn't a straightforward process, but I'm happy with the results. Can we improve further? Certainly! In the current implementation, each type of algorithm has its own thread, because this was the easiest to setup in the end. However, this doesn't align well with the required resource capacity. Since we're dealing with CPU-bound tasks, it'd make more sense to match the amount of workers with the amount of available (virtual) cores. This could be implemented in a new `WorkerPool` class that manages a fixed size of generic workers (`navigator.hardwareConcurrency` would make a good candidate for the size). The pool accepts work and uses one of the available workers to handle the work. If there are no workers available, it will wait for the next available worker.
+
+[Calvin Metcalf](https://calvinmetcalf.com/) worded the essence of Web Workers well at the end of [his article on the subject](https://calvinmetcalf.com/post/55957954794/web-workers-are-slower-and-thats-ok), so I'd like to close this chapter by quoting him:
+
+> The worker is not really about parallelism, that is more of a side benefit, it’s about concurrency and getting things out of the most valuable thread you have, the UI thread.   A web worker isn’t about making something take 2 seconds instead of 4 seconds, it’s about doing that thing with the DOM freezing for 0 seconds.
+
+Amen.

@@ -22,3 +22,5 @@ declare module "@lekoarts/gatsby-theme-minimal-blog/src/gatsby-plugin-theme-ui" 
   const theme: Theme
   export default theme
 }
+
+declare module "comlink-loader!*"

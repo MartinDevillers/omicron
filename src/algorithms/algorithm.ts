@@ -3,7 +3,7 @@ import { Complexity } from "../complexities"
 export default abstract class Algorithm {
   private operations!: number
 
-  public executeAndCount(array: number[]): number {
+  public async executeAndCount(array: number[]): Promise<number> {
     this.operations = 0
     try {
       this.execute(array)

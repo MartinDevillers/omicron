@@ -1,10 +1,11 @@
 import { ScatterSeries, ErrorBarSeries } from "react-jsx-highcharts"
-import React from "react"
+import React, { useEffect } from "react"
 import Highcharts from "highcharts"
 import addHighchartsMore from "highcharts/highcharts-more"
 import analyzer, { Analysis } from "../analyzer"
 import { DataSet } from "../data-sets"
 import Algorithm from "../algorithms/algorithm"
+import Stopwatch from "../util/stopwatch"
 
 if (typeof Highcharts === "object") {
   addHighchartsMore(Highcharts)
@@ -21,11 +22,33 @@ type AnalysisSeriesProps = {
   showRange: boolean
 }
 
-const prepareAnalysisData = (props: AnalysisSeriesProps) =>
+const prepareAnalysisData = async (props: AnalysisSeriesProps) =>
   props.data ? props.data : analyzer(props.algorithms, props.dataSets, props.sizes, props.scatter)
 
-const AnalysisSeries = (props: AnalysisSeriesProps) =>
-  prepareAnalysisData(props).reduce((series, current) => {
+const AnalysisSeries = (props: AnalysisSeriesProps) => {
+  const [analysis, setAnalysis] = React.useState([
+    {
+      name: "Loading",
+      dataSetName: "Loading",
+      dataSetSize: 0,
+      algorithm: "Loading",
+      actualOperations: 0,
+      expectedOperationsWorst: 0,
+      expectedOperationsBest: 0,
+      expectedOperationsAverage: 0,
+    },
+  ] as Analysis[])
+
+  useEffect(() => {
+    ;(async function runAnalysis() {
+      const stopwatch = new Stopwatch("Analyzer")
+      const data = await analyzer(props.algorithms, props.dataSets, props.sizes, props.scatter)
+      stopwatch.stop()
+      setAnalysis(data)
+    })()
+  }, [])
+
+  return analysis.reduce((series, current) => {
     const scatterKey = keyify("scatter", current.name)
     const errorKey = keyify("error", current.name)
     let scatterSeries = series.find((s) => s.key === scatterKey)
@@ -46,5 +69,6 @@ const AnalysisSeries = (props: AnalysisSeriesProps) =>
       } as any) // @todo find a better solution for this
     return series
   }, [] as React.ReactElement<Highcharts.Series>[])
+}
 
 export default AnalysisSeries

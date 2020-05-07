@@ -36,20 +36,19 @@ const logarithmics = [
   8000,
 ]
 
-export default function analyze(
+export async function analyze(
   algorithms: Algorithm[],
   dataSets: DataSet[],
   sizes: number[] = logarithmics,
   scatter = false
-): Analysis[] {
-  const analyses: Analysis[] = []
+): Promise<Analysis[]> {
+  const analyses: Promise<Analysis>[] = []
   for (const size of sizes) {
     for (const dataSet of dataSets) {
       const array = dataSet.generate(size * (scatter ? Math.random() * 0.5 + 0.75 : 1))
       const actualSize = array.length
       for (const algorithm of algorithms) {
-        const operations = algorithm.executeAndCount(Array.from(array))
-        analyses.push({
+        const analysis = algorithm.executeAndCount(Array.from(array)).then((operations) => ({
           name: algorithms.length === 1 ? dataSet.name : algorithm.name,
           algorithm: algorithm.name,
           dataSetName: dataSet.name,
@@ -58,10 +57,12 @@ export default function analyze(
           expectedOperationsBest: algorithm.timeComplexityBest.calculate(actualSize),
           expectedOperationsAverage: algorithm.timeComplexityAverage.calculate(actualSize),
           expectedOperationsWorst: algorithm.timeComplexityWorst.calculate(actualSize),
-        })
+        }))
+        analyses.push(analysis)
       }
     }
   }
-  // console.log(JSON.stringify(analyses))
-  return analyses
+  return Promise.all(analyses)
 }
+
+export default analyze
