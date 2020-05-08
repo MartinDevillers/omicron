@@ -11,14 +11,14 @@ Heap Sort has a *linearithmic* time complexity for most common cases.
 
 <ComplexityChart title="Time complexity of Heap Sort on a variety of lists of numbers">
     <ComplexitySeries/>
-    <AnalysisSeries algorithms={[Algorithms.heapSort]} dataSets={[DataSets.random, DataSets.sorted, DataSets.reversed, DataSets.millions, DataSets.zigzag, DataSets.sawtooth, DataSets.semiSorted]}/>
+    <AnalysisSeries id="heap-sort-various" algorithms={[Algorithms.heapSort]} dataSets={[DataSets.random, DataSets.sorted, DataSets.reversed, DataSets.millions, DataSets.zigzag, DataSets.sawtooth, DataSets.semiSorted]}/>
 </ComplexityChart>
 
 Heap Sort performs (close to) *linear*, which is better than *linearithmic*, in one specific case: when the input list contains (large series of) identical numbers.
 
 <ComplexityChart title="Time complexity of Heap Sort on a list of identical numbers">
     <ComplexitySeries/>
-    <AnalysisSeries algorithms={[Algorithms.heapSort]} dataSets={[DataSets.same, DataSets.zeroes, DataSets.combine(DataSets.same, DataSets.zeroes)]}/>
+    <AnalysisSeries id="heap-sort-identical" algorithms={[Algorithms.heapSort]} dataSets={[DataSets.same, DataSets.zeroes, DataSets.combine(DataSets.same, DataSets.zeroes)]}/>
 </ComplexityChart>
 
 ## Algorithm

@@ -3,10 +3,6 @@ title: Demo
 slug: "/demo"
 ---
 
-import analysisAllAlgorithmsRandom from "./analysis-all-algorithms-random.json"
-import analysisAllAlgorithmsSorted from "./analysis-all-algorithms-sorted.json"
-import analysisCountingSortAllDataSets from "./analysis-counting-sort-all-data-sets.json"
-import analysisLinearithmicsRace from "./analysis-linearithmics-race.json"
 import Algorithms from "../../../src/algorithms"
 import DataSets from "../../../src/data-sets"
 
@@ -20,7 +16,7 @@ Below is a visualization of the time complexity of sorting algorithms given a ra
 
 <ComplexityChart title="Time complexity of sorting algorithms on a random list of numbers">
     <ComplexitySeries/>
-    <AnalysisSeries data={analysisAllAlgorithmsRandom} algorithms={Algorithms.all} dataSets={[DataSets.random]}/>
+    <AnalysisSeries id="all-algorithms-random" algorithms={Algorithms.all} dataSets={[DataSets.random]}/>
 </ComplexityChart>
 
 As expected, all algorithms conform to their average-case runtime. Counting Sort is the fastest algorithm in this experiment, because it performs well on this particular list of numbers: the randomizer limits the variation of the numbers to the size of the list.
@@ -31,7 +27,7 @@ In the next experiment, the same algorithms are analyzed, but this time using a 
 
 <ComplexityChart title="Time complexity of sorting algorithms on a sorted list of numbers">
     <ComplexitySeries/>
-    <AnalysisSeries data={analysisAllAlgorithmsSorted} algorithms={Algorithms.all} dataSets={[DataSets.sorted]}/>
+    <AnalysisSeries id="all-algorithms-sorted" algorithms={Algorithms.all} dataSets={[DataSets.sorted]}/>
 </ComplexityChart>
 
 For most algorithms, sorting an already sorted list of numbers results in the best-case performance of that algorithm. Thus, for algorithms where the best-case performance is different from the average-case performance, a drop in operations is observed compared to the previous experiment. Quick Sort is the only exception, as it suddenly performs *much worse*. This is to be expected as (counter intuitively) a sorted list is the worst-case scenario for early versions of Quick Sort. Later versions of Quick Sort select the pivots more intelligently, but it is always possible to create a data set that triggers worst-case performance.
@@ -42,7 +38,7 @@ In this experiment, the Counting Sort algorithm is used to sort various lists of
 
 <ComplexityChart title="Time complexity of Counting Sort on various lists of numbers">
     <ComplexitySeries/>
-    <AnalysisSeries data={analysisCountingSortAllDataSets} algorithms={[Algorithms.countingSort]} dataSets={DataSets.all}/>
+    <AnalysisSeries id="counting-sort-all" algorithms={[Algorithms.countingSort]} dataSets={DataSets.all}/>
 </ComplexityChart>
 
 For most lists of numbers, Counting Sort delivers a runtime that's close to linear, which is extremely good for a sorting algorithm. What's interesting to see is that Counting Sort performs differently for lists where the values of the numbers are higher than the size of the list. This is the case for the "thousands" and "millions" series. These series contain N numbers, where each number is a random value between zero and a thousand (or a million). Even for small lists containing just 10 elements, Counting Sort requires thousands (or even millions!) of operations to sort the list. This is the unique property of Counting Sort: it beats other algorithms on lists with low variance and performs abysmal on lists with high variance.
@@ -53,7 +49,7 @@ In this final experiment, we let the three linearithmic algorithms Merge Sort, H
 
 <ComplexityChart title="Time complexity of linearithmic algorithms on various lists of numbers">
     <ComplexitySeries/>
-    <AnalysisSeries data={analysisLinearithmicsRace} algorithms={[Algorithms.mergeSort, Algorithms.timSort, Algorithms.heapSort]} dataSets={DataSets.all} scatter={true}/>
+    <AnalysisSeries id="linearithmics-race" algorithms={[Algorithms.mergeSort, Algorithms.timSort, Algorithms.heapSort]} dataSets={DataSets.all} scatter={true}/>
 </ComplexityChart>
 
 All three algorithms show a solid linearithmic run time for all sizes of N. Merge Sort shows this pattern the best, while Heap Sort and Tim Sort sometimes lean towards a linear runtime. While the visualization may show that Tim Sort and Heap Sort have similar performance, in practice Tim Sort would be the winner. The reason why this visualization doesn't reflect this difference is because we are solely measuring code iterations, whereas real-life performance is determined by *many* different factors.

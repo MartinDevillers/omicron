@@ -13,21 +13,21 @@ This means that the run time is identical regardless whether the input is random
 
 <ComplexityChart title="Time complexity of Counting Sort on a random, sorted and reversed list of numbers">
     <ComplexitySeries/>
-    <AnalysisSeries algorithms={[Algorithms.countingSort]} dataSets={[DataSets.random, DataSets.sorted, DataSets.reversed]}/>
+    <AnalysisSeries id="counting-sort-various" algorithms={[Algorithms.countingSort]} dataSets={[DataSets.random, DataSets.sorted, DataSets.reversed]}/>
 </ComplexityChart>
 
 The run time improves when `k` is minimal, which is the case for lists of identical numbers.
 
 <ComplexityChart title="Time complexity of Counting Sort on a list of identical numbers">
     <ComplexitySeries/>
-    <AnalysisSeries algorithms={[Algorithms.countingSort]} dataSets={[DataSets.zeroes, DataSets.same]}/>
+    <AnalysisSeries id="counting-sort-identical" algorithms={[Algorithms.countingSort]} dataSets={[DataSets.zeroes, DataSets.same]}/>
 </ComplexityChart>
 
 In contrast, the run time worsens (drastically) when `k` is large. For instance, given a tiny array of just ten numbers, but where each number is a value between zero and a million, Counting Sort requires *millions* of operations to sort the array.
 
 <ComplexityChart title="Time complexity of Counting Sort on a list of high variance">
     <ComplexitySeries/>
-    <AnalysisSeries algorithms={[Algorithms.countingSort]} dataSets={[DataSets.thousands, DataSets.millions]}/>
+    <AnalysisSeries id="bubble-sort-variance" algorithms={[Algorithms.countingSort]} dataSets={[DataSets.thousands, DataSets.millions]}/>
 </ComplexityChart>
 
 ## Algorithm

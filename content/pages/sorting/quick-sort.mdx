@@ -11,21 +11,21 @@ Quick Sort has a *linearithmic* best and average-case time complexity, which can
 
 <ComplexityChart title="Time complexity of Quick Sort on a random list of numbers">
     <ComplexitySeries/>
-    <AnalysisSeries algorithms={[Algorithms.quickSort]} dataSets={[DataSets.random]}/>
+    <AnalysisSeries id="quick-sort-random" algorithms={[Algorithms.quickSort]} dataSets={[DataSets.random]}/>
 </ComplexityChart>
 
 Quick Sort has a *quadratic* worst-case time complexity, which can be tested using a **sorted** (yes, that's right) list of numbers.
 
 <ComplexityChart title="Time complexity of Quick Sort on a sorted list of numbers">
     <ComplexitySeries/>
-    <AnalysisSeries algorithms={[Algorithms.quickSort]} dataSets={[DataSets.sorted]}/>
+    <AnalysisSeries id="quick-sort-sorted" algorithms={[Algorithms.quickSort]} dataSets={[DataSets.sorted]}/>
 </ComplexityChart>
 
 Fortunately, because Quick Sort performs so well on randomly sorted lists, the previous case can be easily mitigated by randomizing the input before executing the actual algorithm. Another solution is to change the pivot selection algorithm. Modern versions of Quick Sort use intelligent pivot selection algorithms in order to avoid the worst-case scenario in common data sets (e.g. sorted; reversed). However, even with these improved algorithms, it's always possible to construct an input that will produce worst-case performance.
 
 <ComplexityChart title="Time complexity of Quick Sort on a several blended lists of numbers">
     <ComplexitySeries/>
-    <AnalysisSeries algorithms={[Algorithms.quickSort]} dataSets={DataSets.repeat(DataSets.blender, 3, true)} scatter={true} sizes={[1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3500, 4000, 4500, 5000]}/>
+    <AnalysisSeries id="quick-sort-blended" algorithms={[Algorithms.quickSort]} dataSets={DataSets.repeat(DataSets.blender, 3, true)} scatter={true} sizes={[1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3500, 4000, 4500, 5000]}/>
 </ComplexityChart>
 
 ## Algorithm

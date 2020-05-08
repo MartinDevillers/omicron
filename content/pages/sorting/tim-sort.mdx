@@ -11,35 +11,35 @@ Tim Sort has a *linear* best-case time complexity, which can be tested using a l
 
 <ComplexityChart title="Time complexity of Tim Sort on a list of identical numbers">
     <ComplexitySeries/>
-    <AnalysisSeries algorithms={[Algorithms.timSort]} dataSets={[DataSets.zeroes, DataSets.same]}/>
+    <AnalysisSeries id="tim-sort-identical" algorithms={[Algorithms.timSort]} dataSets={[DataSets.zeroes, DataSets.same]}/>
 </ComplexityChart>
 
 Tim Sort performs significantly better than *linearithmic* for a variety of sorted lists of numbers.
 
 <ComplexityChart title="Time complexity of Tim Sort on sorted lists of numbers">
     <ComplexitySeries/>
-    <AnalysisSeries algorithms={[Algorithms.timSort]} dataSets={[DataSets.sorted, DataSets.reversed, DataSets.square]}/>
+    <AnalysisSeries id="tim-sort-sorted" algorithms={[Algorithms.timSort]} dataSets={[DataSets.sorted, DataSets.reversed, DataSets.square]}/>
 </ComplexityChart>
 
 Tim Sort performs about *linearithmic* for a variety of lists of numbers. What these lists have in common is that they contain partially ordered numbers inside them.
 
 <ComplexityChart title="Time complexity of Tim Sort on semi sorted lists of numbers">
     <ComplexitySeries/>
-    <AnalysisSeries algorithms={[Algorithms.timSort]} dataSets={[DataSets.sortedHalf, DataSets.halfSorted, DataSets.zigzag, DataSets.semiSorted, DataSets.sawtooth ]}/>
+    <AnalysisSeries id="tim-sort-semi-sorted" algorithms={[Algorithms.timSort]} dataSets={[DataSets.sortedHalf, DataSets.halfSorted, DataSets.zigzag, DataSets.semiSorted, DataSets.sawtooth ]}/>
 </ComplexityChart>
 
 In the next test, three blended lists are sorted. A blended list is build by combining more than ten different data sets in order to produce a list that is part random, part sorted, part reversed, part zigzag, part zeroes and so on.
 
 <ComplexityChart title="Time complexity of Tim Sort on three blended lists of numbers">
     <ComplexitySeries/>
-    <AnalysisSeries algorithms={[Algorithms.timSort]} dataSets={DataSets.repeat(DataSets.blender, 3, false)} />
+    <AnalysisSeries id="tim-sort-blended" algorithms={[Algorithms.timSort]} dataSets={DataSets.repeat(DataSets.blender, 3, false)} />
 </ComplexityChart>
 
 Finally, Tim Sort has a *linearithmic* worst-case time complexity, which can be tested using a random list of numbers.
 
 <ComplexityChart title="Time complexity of Tim Sort on a random list of numbers">
     <ComplexitySeries/>
-    <AnalysisSeries algorithms={[Algorithms.timSort]} dataSets={[DataSets.random]}/>
+    <AnalysisSeries id="tim-sort-random" algorithms={[Algorithms.timSort]} dataSets={[DataSets.random]}/>
 </ComplexityChart>
 
 ## Algorithm

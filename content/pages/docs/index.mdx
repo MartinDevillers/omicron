@@ -3,7 +3,6 @@ title: Documentation
 slug: "/docs"
 ---
 
-import analysisQuickSortRandom from "./analysis-quick-sort-random.json"
 import Algorithms from "../../../src/algorithms"
 import DataSets from "../../../src/data-sets"
 
@@ -33,7 +32,7 @@ Below is an example using the Quick Sort algorithm on a data set filled with ran
 
 <ComplexityChart title="Time complexity of Quick Sort on a random set of numbers">
     <ComplexitySeries/>
-    <AnalysisSeries data={analysisQuickSortRandom} algorithms={[Algorithms.quickSort]} dataSets={[DataSets.random]}/>
+    <AnalysisSeries id="quick-sort-random" algorithms={[Algorithms.quickSort]} dataSets={[DataSets.random]}/>
 </ComplexityChart>
 
 I'll explain what you're looking at:

@@ -6,6 +6,7 @@ import analyzer, { Analysis } from "../analyzer"
 import { DataSet } from "../data-sets"
 import Algorithm from "../algorithms/algorithm"
 import Stopwatch from "../util/stopwatch"
+import { persist, preanalyzed } from "../preanalyzed"
 
 if (typeof Highcharts === "object") {
   addHighchartsMore(Highcharts)
@@ -14,6 +15,7 @@ if (typeof Highcharts === "object") {
 const keyify = (key: string, name: string) => `${key}-${name}`.replace(" ", "-").toLowerCase()
 
 type AnalysisSeriesProps = {
+  id: string
   data: Analysis[]
   algorithms: Algorithm[]
   dataSets: DataSet[]
@@ -41,9 +43,15 @@ const AnalysisSeries = (props: AnalysisSeriesProps) => {
 
   useEffect(() => {
     ;(async function runAnalysis() {
-      const stopwatch = new Stopwatch("Analyzer")
-      const data = await analyzer(props.algorithms, props.dataSets, props.sizes, props.scatter)
-      stopwatch.stop()
+      let data = preanalyzed(props.id)
+      if (!data) {
+        const stopwatch = new Stopwatch("Analyzer")
+        data = await analyzer(props.algorithms, props.dataSets, props.sizes, props.scatter)
+        stopwatch.stop()
+        // if (props.id) {
+        //   persist(props.id, data)
+        // }
+      }
       setAnalysis(data)
     })()
   }, [])
