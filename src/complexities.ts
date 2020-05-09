@@ -11,7 +11,7 @@ export abstract class Complexities {
     name: "Logarithmic",
     notation: "Ο(log n)",
     rating: "excellent",
-    calculate: (n) => Math.log2(n),
+    calculate: (n) => Math.round(Math.log2(n)),
   }
 
   static readonly linear: Complexity = {
@@ -32,7 +32,7 @@ export abstract class Complexities {
     name: "Linearithmic",
     notation: "Ο(n log n)",
     rating: "fair",
-    calculate: (n) => n * Math.log2(n),
+    calculate: (n) => Math.round(n * Math.log2(n)),
   }
 
   static readonly quadratic: Complexity = {
