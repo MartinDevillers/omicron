@@ -75,8 +75,6 @@ export default class TimSort extends Algorithm {
    * negative number if .toString() < b.toString(), 0 otherwise.
    */
   alphabeticalCompare(a: string | object | number, b: string | object | number): number {
-    this.incrementOpCounter()
-
     if (a === b) {
       return 0
     }
