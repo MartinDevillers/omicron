@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import { jsx, Link } from "theme-ui"
 
 const Footer = () => (
   <footer
@@ -18,24 +18,24 @@ const Footer = () => (
   >
     <div>
       &copy; {new Date().getFullYear()}{" "}
-      <Styled.a aria-label="Link to the author's website" href="https://devillers.nl/en/">
+      <Link aria-label="Link to the author's website" href="https://devillers.nl/en/">
         Martin Devillers
-      </Styled.a>
+      </Link>
       . All rights reserved.
     </div>
     <div>
-      <Styled.a
+      <Link
         aria-label="Link to the theme's GitHub repository"
         href="https://github.com/LekoArts/gatsby-themes/tree/master/themes/gatsby-theme-minimal-blog"
       >
         Theme
-      </Styled.a>
+      </Link>
       {` `}
       by
       {` `}
-      <Styled.a aria-label="Link to the theme author's website" href="https://www.lekoarts.de/en">
+      <Link aria-label="Link to the theme author's website" href="https://www.lekoarts.de/en">
         LekoArts
-      </Styled.a>
+      </Link>
     </div>
   </footer>
 )
