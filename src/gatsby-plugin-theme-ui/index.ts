@@ -31,6 +31,15 @@ export default {
       },
     },
   },
+  links: {
+    arrow: {
+      padding: 2,
+      margin: -2,
+      opacity: 0.65,
+      transition: "opacity 0.3s ease-in-out",
+      "&:hover, &:focus": { opacity: 1 },
+    },
+  },
   icons: {
     arrow: {
       width: 4,
@@ -40,18 +49,16 @@ export default {
       borderRightStyle: "solid",
       borderTopWidth: "0.25rem",
       borderTopStyle: "solid",
-      borderColor: "secondary",
-      "&:hover": {
-        borderColor: "heading",
-      },
+      borderColor: "toggleIcon",
     },
     dot: {
       width: 2,
       height: 2,
       marginY: 2,
       marginX: 1,
-      backgroundColor: "secondary",
+      backgroundColor: "toggleIcon",
       borderRadius: "50%",
+      opacity: 0.65,
     },
   },
 }

@@ -37,11 +37,11 @@ const pages = new DoublyLinkedLoop([
 const PrevNextNav = (section: DoublyLinkedLoop<string>, slug: string) =>
   section.contains(slug) && (
     <Flex pt={[1, 2, 3]}>
-      <TLink as={Link} sx={{ variant: `links.secondary` }} to={section.prev(slug)!} alt="Previous page">
+      <TLink as={Link} sx={{ variant: `links.arrow` }} to={section.prev(slug)!} title="Previous page">
         <div sx={{ variant: `icons.arrow`, transform: `rotate(225deg)` }} />
       </TLink>
       <div sx={{ variant: `icons.dot` }} />
-      <TLink as={Link} sx={{ variant: `links.secondary` }} to={section.next(slug)!} alt="Next page">
+      <TLink as={Link} sx={{ variant: `links.arrow` }} to={section.next(slug)!} title="Next page">
         <div sx={{ variant: `icons.arrow`, transform: `rotate(45deg)` }} />
       </TLink>
     </Flex>
