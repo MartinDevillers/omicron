@@ -32,6 +32,7 @@ export default {
     },
   },
   links: {
+    ...baseTheme.links,
     arrow: {
       padding: 2,
       margin: -2,
