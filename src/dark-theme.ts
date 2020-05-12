@@ -205,6 +205,12 @@ const highContrastDark = {
     trackBackgroundColor: "#404043",
     trackBorderColor: "#404043",
   },
+
+  loading: {
+    style: {
+      backgroundColor: "#2d3748",
+    },
+  },
 }
 
 export default highContrastDark

@@ -1,4 +1,4 @@
-import { ScatterSeries, ErrorBarSeries } from "react-jsx-highcharts"
+import { ScatterSeries, ErrorBarSeries, useChart } from "react-jsx-highcharts"
 import React, { useEffect } from "react"
 import Highcharts from "highcharts"
 import addHighchartsMore from "highcharts/highcharts-more"
@@ -26,6 +26,7 @@ type AnalysisSeriesProps = {
 }
 
 const AnalysisSeries = (props: AnalysisSeriesProps) => {
+  const chart = useChart()
   const [analysis, setAnalysis] = React.useState([] as Analysis[])
   const [preanalyzedMode] = usePreanalyzedMode()
   const [webWorkerMode] = useWebWorkerMode()
@@ -46,6 +47,7 @@ const AnalysisSeries = (props: AnalysisSeriesProps) => {
             persist(props.id, data)
           }
         }
+        chart.hideLoading()
         setAnalysis(data)
       })()
     }, 1)

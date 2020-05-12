@@ -1,8 +1,18 @@
 /** @jsx jsx */
 import React from "react"
-import { useColorMode, jsx } from "theme-ui"
+import { useColorMode, useThemeUI, jsx } from "theme-ui"
 import Highcharts from "highcharts"
-import { HighchartsChart, Chart, withHighcharts, XAxis, YAxis, Title, Legend, Tooltip } from "react-jsx-highcharts"
+import {
+  HighchartsChart,
+  Chart,
+  withHighcharts,
+  XAxis,
+  YAxis,
+  Title,
+  Legend,
+  Tooltip,
+  Loading,
+} from "react-jsx-highcharts"
 import applyExporting from "highcharts/modules/exporting"
 import darkTheme from "../dark-theme"
 
@@ -47,11 +57,20 @@ type ComplexityChartProps = {
 }
 
 const ComplexityChart = ({ title, children }: ComplexityChartProps) => {
+  const { theme } = useThemeUI()
   const [colorMode] = useColorMode()
   const isDark = colorMode === `dark`
 
   const setTheme = (chart: Highcharts.Chart) => {
     if (isDark) {
+      const loadingStyle = {
+        loading: {
+          style: {
+            backgroundColor: theme.colors?.chart,
+          },
+        },
+      }
+      chart.update(loadingStyle)
       // @todo fix this ugly lifecycle hack
       setTimeout(() => chart.update(darkTheme), 1)
     }
@@ -61,6 +80,7 @@ const ComplexityChart = ({ title, children }: ComplexityChartProps) => {
     <HighchartsChart plotOptions={plotOptions} callback={setTheme} key={colorMode} sx={{ backgroundColor: "chart" }}>
       <Chart marginRight="70" zoomType="xy" backgroundColor="transparent" />
       <Title>{title}</Title>
+      <Loading>Running analysis...</Loading>
       <Legend />
       <Tooltip />
       <XAxis type="logarithmic" min="10" max="10000">
