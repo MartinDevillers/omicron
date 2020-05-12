@@ -62,4 +62,9 @@ export default {
       opacity: 0.65,
     },
   },
+  forms: {
+    radio: {
+      color: "toggleIcon",
+    },
+  },
 }

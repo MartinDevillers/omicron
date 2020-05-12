@@ -7,6 +7,7 @@ import { DataSet } from "../data-sets"
 import Algorithm from "../algorithms/algorithm"
 import Stopwatch from "../util/stopwatch"
 import { persist, preanalyzed } from "../preanalyzed"
+import { PreanalyzedMode, StopwatchMode, usePreanalyzedMode, useStopwatchMode, useWebWorkerMode } from "../settings"
 
 if (typeof Highcharts === "object") {
   addHighchartsMore(Highcharts)
@@ -24,36 +25,30 @@ type AnalysisSeriesProps = {
   showRange: boolean
 }
 
-const prepareAnalysisData = async (props: AnalysisSeriesProps) =>
-  props.data ? props.data : analyzer(props.algorithms, props.dataSets, props.sizes, props.scatter)
-
 const AnalysisSeries = (props: AnalysisSeriesProps) => {
-  const [analysis, setAnalysis] = React.useState([
-    {
-      name: "Loading",
-      dataSetName: "Loading",
-      dataSetSize: 0,
-      algorithm: "Loading",
-      actualOperations: 0,
-      expectedOperationsWorst: 0,
-      expectedOperationsBest: 0,
-      expectedOperationsAverage: 0,
-    },
-  ] as Analysis[])
+  const [analysis, setAnalysis] = React.useState([] as Analysis[])
+  const [preanalyzedMode] = usePreanalyzedMode()
+  const [webWorkerMode] = useWebWorkerMode()
+  const [stopwatchMode] = useStopwatchMode()
 
   useEffect(() => {
-    ;(async function runAnalysis() {
-      let data = preanalyzed(props.id)
-      if (!data) {
-        const stopwatch = new Stopwatch("Analyzer")
-        data = await analyzer(props.algorithms, props.dataSets, props.sizes, props.scatter)
-        stopwatch.stop()
-        // if (props.id) {
-        //   persist(props.id, data)
-        // }
-      }
-      setAnalysis(data)
-    })()
+    // @todo this hack is definitely NSFW; actually I should rewrite this whole part
+    setTimeout(() => {
+      ;(async function runAnalysis() {
+        let data = preanalyzed(props.id)
+        if (preanalyzedMode !== PreanalyzedMode.Enabled || !data) {
+          const stopwatch = new Stopwatch("Analyzer")
+          data = await analyzer(props.algorithms, props.dataSets, props.sizes, props.scatter)
+          if (stopwatchMode === StopwatchMode.Analyzer) {
+            stopwatch.stop()
+          }
+          if (preanalyzedMode === PreanalyzedMode.Persist) {
+            persist(props.id, data)
+          }
+        }
+        setAnalysis(data)
+      })()
+    }, 1)
   }, [])
 
   return analysis.reduce((series, current) => {
