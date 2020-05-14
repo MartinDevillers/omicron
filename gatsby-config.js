@@ -26,6 +26,7 @@ module.exports = {
     {
       resolve: `@lekoarts/gatsby-theme-minimal-blog`,
       options: {
+        blogPath: `/news`,
         navigation: [
           {
             title: `Docs`,
@@ -40,17 +41,17 @@ module.exports = {
             slug: `/live`,
           },
           {
+            title: `News`,
+            slug: `/news`,
+          },
+          {
             title: `About`,
             slug: `/about`,
           },
         ],
         externalLinks: [
           {
-            name: `LinkedIn`,
-            url: `https://www.linkedin.com/in/devillers`,
-          },
-          {
-            name: `GitHub`,
+            name: `Source`,
             url: `https://github.com/MartinDevillers/omicron/`,
           },
         ],
