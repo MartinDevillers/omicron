@@ -1,0 +1,53 @@
+---
+title: Time for some reflection
+date: 2020-05-14
+description: My thoughts after one month of working on this project
+tags:
+  - Post
+---
+
+It's been about a month since I started this project. I think by now I've clocked well over a hundred hours writing code, experimenting with different technologies and tweaking the results. So I thought it was time to write a reflection on what went (not so) well.
+
+First of all, whether I'm leading a multi-million dollar multi-team cross-country IT initiative or my tiny one-man pet project, the same things tend to happen. For instance, the things I thought would be hard didn't take that much time at all. Things like instrumenting the algorithms, creating the datasets and plotting the results in a chart. Looking back at my logs I had a rudimentary version of the final product up and running in less than two days. So what took so much time? Well, basically, it's that part after you finish a concept and say to yourself "Alright, now let's do it again but this time *good*. With frameworks and standards and such."
+
+That's when trivial things pop-up that turn out not to be so trivial. Or well maybe they are but I'm just ~~stubborn~~ a perfectionist and I don't want to give up. A good example is the "Dark Mode" feature that came with the theme I picked. I choose LekoArt's excellent [Minimal Blog](https://github.com/LekoArts/gatsby-starter-minimal-blog), because it had everything I wanted in a theme: typography-only, syntax highlighting, dark mode and cool purple highlights (purple is my favorite color). However, as I was adding charts into the mix I wanted my charts to support dark mode too. Specifically, I wanted my charts to respond to the user switching color modes, just like the rest of the website does.
+
+![Yea no](./giphy-office-space.gif)
+
+Oh boy.
+
+That was a solid eight hours ~~wasted~~ getting different technologies to play nice. I could say this was due to my lack of experience with these technologies, and that this normally never happens but then again: *every single project I've done comes with a new set of technologies*. I mean, I hear tech recruiters sometimes say that they prefer "specialists" over "generalists", but then I think: specialists in what? Do specialists exist in a world where frameworks go from alpha, to market leader, to legacy in like, what, five years? And even if you stay loyal to one technology, that technology evolves as well. Angular 1 versus 2 is a good example. Microsoft also has a nice history of major bumping a version of something, while under the hood replacing pretty much everything except the name and logo. Now React is doing the same thing with [React Hooks](https://reactjs.org/docs/hooks-intro.html), introducing a "opt-in" feature that "only" adds a new way to handle state in React, which is totally not a big thing (it is) and this totally won't replace the old way you handled state (it will), because the React team is going to support the old way (for now) and you absolutely surely do not have to rewrite all your Class components into Functional components (you can see where this is going).
+
+![React, I see what you did there](giphy-i-see-what-you-did-there.gif)
+
+Sorry, I went a bit ranty there.
+
+So I spent a day on getting my chart to look good in the dark.
+
+What else took a while?
+
+Ah yes, I remember.
+
+### LINTERS
+
+![Abandon ship](./giphy-abandon-ship.gif)
+
+Linters are like pull requests. On the one hand, I am open to feedback, want other people to look at my code and absolutely belief it will make the world a better place. On the other hand, I just want to push my change and NO STEVE I DONT WANT TO PUT FINAL IN FRONT OF EVERY SINGLE VARIABLE BECAUSE WHATEVER. So linters are like that. You install it, you pick the Airbnb rule set because they're one of the few organizations that dared to create some form of standard and then you immediately regret all of these decisions when your console fills with lines after lines after lines of warnings and errors. In my case I'm actually getting hit twice because I'm also using TypeScript which comes with its own slew of you-should-probably-fix-this messages.
+
+Fun times.
+
+So I solved all of those and I felt *okeyish* as I pushed a commit that pretty much touched every single line of code I'd written at that point. Looking back I should setup the linter immediately the next time I start a new project. For the ruleset I still recommend the one from Airbnb but with the guideline that it's ok to disable a rule if you feel it's too strict or you simply disagree (especially when you Google said rule and you see a [100 comment long ~~poop-flinging contest~~ debate on GitHub](https://github.com/airbnb/javascript/issues/1271)). For the TypeScript part I recommend following the rules unless you have to bend perfectly fine and readable code into something that looks awkward but satisfies the checker. In that case, I'd just ignore the warning.
+
+For the rest I spend a few days getting Web Workers to (not) work, which I already discussed in a [previous post](/moved-algorithms-to-web-workers).
+
+Finally, I've revised the content of the project *a lot*. When I started the project I had a simple mission to visualize time complexities with appealing charts. Once I had that I realized that the charts were kind of useless without the context in which they were used. So I had to create a proper narrative in which I could use my charts as a supportive element. Basically that means the age-old process of writing-scratching-writing articles. This process takes time, especially when you're writing about a subject you last saw in a university classroom lecture. I'm definitely no scientist in this field and there are dozens of people more qualified to write about this subject than I am. Yet, I'm the one visualizing this stuff at the moment so I'll (pretend to) be the expert until someone steps up and does a better job.
+
+### Wrapping up
+
+I am very pleased with the results I've gotten so far. The tech-stack React + Gatsby + TypeScript + Netlify is easy to pick up, feels mature and is *ridiculously* powerful. The development experience of writing code and seeing the results pretty much instantly in your browser is simply amazing. I love compilers but I also love a tight feedback-loop and once you've tasted instant feedback it's hard to go back. The ability to mix Markdown with (custom) React components is otherworldly. Am I still writing code or am I just writing advanced interactive articles? Heck, I don't even feel like I'm building a website anymore. No more hours of tinkering with HTML and CSS, floating div's, playing with margins and padding, making sure it looks good in one browser, only to do it all over again for the next (IE I'm looking at you).
+
+Nope, none of that.
+
+I just specify a Box or Flex and let the framework figure out all the different dimensions on all the different viewports. For me that's the true strength of any technology: when it allows you to focus on *your* problem by hiding all the artificial problems you do/should not care about. No CEO has ever said that they wanted their product build in Angular, Vue or React. They just want it build good, cheap and fast. And that's what a good framework allows you to do :-)
+
+Thank you for reading this!
