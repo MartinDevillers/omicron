@@ -8,7 +8,8 @@ export default class MergeSort extends Algorithm {
   timeComplexityWorst = Complexities.linearithmic
 
   execute(array: number[]): void {
-    this.mergeSort(array)
+    const sorted = this.mergeSort(array)
+    for (let i = 0; i < array.length; i++) array[i] = sorted[i]
   }
 
   mergeSort(array: number[]): number[] {

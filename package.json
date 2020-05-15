@@ -14,7 +14,8 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "lint": "eslint . --ignore-path .gitignore --ext .ts,.tsx,.js"
+    "lint": "eslint . --ignore-path .gitignore --ext .ts,.tsx,.js",
+    "test": "jest"
   },
   "dependencies": {
     "@lekoarts/gatsby-theme-minimal-blog": "^2.3.4",
@@ -36,9 +37,12 @@
     "theme-ui": "^0.3.1"
   },
   "devDependencies": {
+    "@types/jest": "^25.2.2",
     "@types/react-responsive": "^8.0.2",
     "@typescript-eslint/eslint-plugin": "^2.31.0",
     "@typescript-eslint/parser": "^2.31.0",
+    "babel-jest": "^26.0.1",
+    "babel-preset-gatsby": "^0.4.2",
     "comlink-loader": "^2.0.0",
     "cross-env": "^7.0.2",
     "eslint": "^7.0.0",
@@ -50,6 +54,9 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^4.0.0",
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.9",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.0.1",
+    "tslint-react": "^5.0.0",
     "typescript": "^3.8.3"
   }
 }

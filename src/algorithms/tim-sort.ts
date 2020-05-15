@@ -11,7 +11,7 @@ export default class TimSort extends Algorithm {
   timeComplexityWorst = Complexities.linearithmic
 
   execute(array: number[]): void {
-    this.sort(array)
+    this.sort(array, this.numericalCompare.bind(this))
   }
 
   /**
@@ -127,6 +127,21 @@ export default class TimSort extends Algorithm {
     }
 
     return aStr < bStr ? -1 : 1
+  }
+
+  /**
+   * Numerical comparison of items.
+   *
+   * @param {string|object|number} a - First element to compare.
+   * @param {string|object|number} b - Second element to compare.
+   * @return {number} - A positive number if a.toString() > b.toString(), a
+   * negative number if .toString() < b.toString(), 0 otherwise.
+   */
+  numericalCompare(a: string | object | number, b: string | object | number): number {
+    if (a === b) {
+      return 0
+    }
+    return a < b ? -1 : 1
   }
 
   /**
