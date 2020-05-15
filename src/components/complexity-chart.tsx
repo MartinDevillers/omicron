@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import React from "react"
+import { useMediaQuery } from "react-responsive"
 import { useColorMode, useThemeUI, jsx } from "theme-ui"
 import Highcharts from "highcharts"
 import {
@@ -58,6 +59,11 @@ type ComplexityChartProps = {
 
 const ComplexityChart = ({ title, children }: ComplexityChartProps) => {
   const { theme } = useThemeUI()
+  const isDesktop = useMediaQuery({ minDeviceWidth: theme.breakpoints?.[0] as string })
+  const yAxisLabels = isDesktop ? { rotation: 0, padding: 5, x: -8 } : { rotation: -90, padding: 0, x: -3 }
+  const titleStyle = isDesktop ? { fontSize: theme.fontSizes?.[2] } : { fontSize: theme.fontSizes?.[1] }
+  const chartMarginRight = isDesktop ? 70 : 65
+  const chartSpacing = isDesktop ? [10, 10, 15, 10] : [10, 5, 15, 5]
   const [colorMode] = useColorMode()
   const isDark = colorMode === `dark`
 
@@ -78,16 +84,16 @@ const ComplexityChart = ({ title, children }: ComplexityChartProps) => {
 
   return (
     <HighchartsChart plotOptions={plotOptions} callback={setTheme} key={colorMode} sx={{ backgroundColor: "chart" }}>
-      <Chart marginRight="70" zoomType="xy" backgroundColor="transparent" />
-      <Title>{title}</Title>
+      <Chart marginRight={chartMarginRight} spacing={chartSpacing} zoomType="xy" backgroundColor="transparent" />
+      <Title style={titleStyle}>{title}</Title>
       <Loading>Running analysis...</Loading>
       <Legend />
       <Tooltip />
-      <XAxis type="logarithmic" min="10" max="10000">
+      <XAxis type="logarithmic" min={10} max={10000}>
         <XAxis.Title>Elements (n)</XAxis.Title>
       </XAxis>
-      <YAxis type="logarithmic" min="1" max="100000000">
-        <YAxis.Title>Operations (O)</YAxis.Title>
+      <YAxis type="logarithmic" min={10} max={100000000} labels={yAxisLabels}>
+        {isDesktop && <YAxis.Title>Operations (O)</YAxis.Title>}
         {children}
       </YAxis>
     </HighchartsChart>
