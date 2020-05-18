@@ -47,7 +47,7 @@ export abstract class DataSets {
 
   static readonly sawtooth: DataSet = {
     name: "Sawtooth",
-    generate: (n) => Array.from({ length: n }, (_, i) => i % Math.sqrt(n)),
+    generate: (n) => Array.from({ length: n }, (_, i) => i % Math.floor(Math.sqrt(n))),
   }
 
   static readonly square: DataSet = {
