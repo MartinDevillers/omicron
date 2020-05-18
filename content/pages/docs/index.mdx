@@ -49,14 +49,17 @@ The rest of this page will provide more details about how this tool works, if yo
 
 ### Generating data sets
 
-A data set is a list of elements on which the algorithm will perform its operation. For example, a sorting algorithm will put a list of numbers into its natural order. The following two aspects are important when generating a data sets:
+A data set is a list of elements on which the algorithm will perform its operation. For example, a sorting algorithm will put a list of numbers into its natural order. Some algorithms have a time complexity that is influenced by the data set. For these algorithms, we typically speak in terms of *best-case* and *worst-case* time complexity. In order to analyze these different cases, the Big O Visualizer comes with a variety of data set generators. Each generator has its own unique combination of the following characteristics:
 
-1. Size. The longer the list, the more work an algorithm has to do.
-2. Distribution. The characteristics of the values of the list.
+1. *Size*. The longer the list, the more work an algorithm has to do.
+2. *Variance*. The difference between the biggest and smallest item in the list.
+3. *Uniqueness*. The percentage of duplicate items in the list, where 0 means no duplicates and 100 means all items are the same value.
+4. *Sortedness*. The percentage of items that are at the same position in the list as when the list would be sorted by its natural order, where 0 means no items are at their sorted position and 100 means all items are at their sorted position (and thus the list is sorted).
+5. *Sequenceness*. The percentage of items in the list that form a sequence. A sequence is a series of consecutive items that are all ascending, equal or descending.
 
-The Big O Visualizer comes with the following data generators.
+The Big O Visualizer comes with the following built-in data generators. The uniqueness, sortedness and sequenceness is calculated for a list of a 1000 items.
 
-<DataSetsTable/>
+<DataSetsDefinitions/>
 
 ### Instrumenting algorithms
 
