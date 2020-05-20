@@ -22,28 +22,6 @@ if (typeof Highcharts === "object") {
 }
 
 const plotOptions: Highcharts.PlotOptions = {
-  area: {
-    lineWidth: 0,
-    marker: {
-      enabled: false,
-    },
-    states: {
-      hover: {
-        lineWidth: 0,
-      },
-    },
-    enableMouseTracking: false,
-    showInLegend: false,
-    dataLabels: {
-      enabled: false,
-      crop: false,
-      allowOverlap: true,
-      overflow: "allow",
-      align: "left",
-      verticalAlign: "middle",
-      format: `{series.userOptions.notation}`,
-    },
-  },
   scatter: {
     tooltip: {
       headerFormat: "<b>{series.name}</b><br>",
@@ -62,7 +40,7 @@ const ComplexityChart = ({ title, children }: ComplexityChartProps) => {
   const isDesktop = useMediaQuery({ minDeviceWidth: theme.breakpoints?.[0] as string })
   const yAxisLabels = isDesktop ? { rotation: 0, padding: 5, x: -8 } : { rotation: -90, padding: 0, x: -3 }
   const titleStyle = isDesktop ? { fontSize: theme.fontSizes?.[2] } : { fontSize: theme.fontSizes?.[1] }
-  const chartMarginRight = isDesktop ? 70 : 65
+  const chartMarginRight = isDesktop ? 70 : 0
   const chartSpacing = isDesktop ? [10, 10, 15, 10] : [10, 5, 15, 5]
   const [colorMode] = useColorMode()
   const isDark = colorMode === `dark`
