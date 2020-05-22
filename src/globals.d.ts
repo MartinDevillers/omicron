@@ -32,4 +32,13 @@ declare module "@lekoarts/gatsby-theme-minimal-blog/src/gatsby-plugin-theme-ui" 
   export default theme
 }
 
-declare module "comlink-loader!*"
+declare module "comlink-loader!*" {
+  export type Worker<T> = {
+    default: T
+  }
+  export type Comlink = {
+    new <T>(): Worker<T>
+  }
+  const comlink: Comlink
+  export default comlink
+}

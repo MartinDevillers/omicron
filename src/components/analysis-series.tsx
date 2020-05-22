@@ -39,7 +39,7 @@ const AnalysisSeries = (props: AnalysisSeriesProps) => {
         let data = preanalyzed(props.id)
         if (preanalyzedMode !== PreanalyzedMode.Enabled || !data) {
           const stopwatch = new Stopwatch("Analyzer")
-          data = await analyzer(props.algorithms, props.dataSets, props.sizes, props.scatter)
+          data = await analyzer(props.algorithms, props.dataSets, props.sizes, props.scatter, webWorkerMode)
           if (stopwatchMode === StopwatchMode.Analyzer) {
             stopwatch.stop()
           }

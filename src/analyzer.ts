@@ -1,5 +1,6 @@
 import { DataSet } from "./data-sets"
 import Algorithm from "./algorithms/algorithm"
+import workerizeExecuteAndCount from "./algorithms/workerizer"
 
 export interface Analysis {
   readonly name: string
@@ -40,7 +41,8 @@ export async function analyze(
   algorithms: Algorithm[],
   dataSets: DataSet[],
   sizes: number[] = logarithmics,
-  scatter = false
+  scatter = false,
+  workerizeFrom = 0
 ): Promise<Analysis[]> {
   const analyses: Promise<Analysis>[] = []
   for (const size of sizes) {
@@ -48,7 +50,9 @@ export async function analyze(
       const array = dataSet.generate(size * (scatter ? Math.random() * 0.5 + 0.75 : 1))
       const actualSize = array.length
       for (const algorithm of algorithms) {
-        const analysis = algorithm.executeAndCount(Array.from(array)).then((operations) => ({
+        const shouldWorkerize = algorithm.timeComplexityWorst.calculate(array.length) >= workerizeFrom
+        const executeAndCount = shouldWorkerize ? workerizeExecuteAndCount(algorithm) : algorithm.executeAndCount.bind(algorithm)
+        const analysis = executeAndCount(Array.from(array)).then((operations) => ({
           name: algorithms.length === 1 ? dataSet.name : algorithm.name,
           algorithm: algorithm.name,
           dataSetName: dataSet.name,
