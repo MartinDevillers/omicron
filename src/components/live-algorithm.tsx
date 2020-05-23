@@ -55,7 +55,7 @@ const LiveAlgorithm = () => {
         <LiveError sx={{ backgroundColor: "background" }} />
       </LiveProvider>
       <LiveProvider code={codePreview} theme={theme} scope={scope} noInline>
-        <Flex sx={{ p: 3, mx: [0, 0, 0, -3], backgroundColor: "toolbar" }} pb={0}>
+        <Flex sx={{ p: 3, mx: [0, 0, 0, -3], backgroundColor: "toolbar", flexWrap: "wrap" }} pb={0}>
           <Box>
             <Button
               disabled={isLiveModeEnabled}
@@ -72,7 +72,7 @@ const LiveAlgorithm = () => {
             </Label>
           </Box>
           <Box pr={3}>
-            <Select defaultValue="Awesome Sort" sx={{ width: "48" }} onChange={changeSelectedExample}>
+            <Select defaultValue="Awesome Sort" sx={{ width: "40" }} onChange={changeSelectedExample}>
               {examples.map((e, i) => (
                 <option key={e.name} value={i}>
                   {e.name}
