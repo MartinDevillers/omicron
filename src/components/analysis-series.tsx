@@ -7,13 +7,44 @@ import { DataSet } from "../data-sets"
 import Algorithm from "../algorithms/algorithm"
 import Stopwatch from "../util/stopwatch"
 import { persist, preanalyzed } from "../preanalyzed"
-import { PreanalyzedMode, StopwatchMode, usePreanalyzedMode, useStopwatchMode, useWebWorkerMode } from "../settings"
+import {
+  PreanalyzedMode,
+  StopwatchMode,
+  useDataSetSize,
+  usePreanalyzedMode,
+  useStopwatchMode,
+  useWebWorkerMode,
+} from "../settings"
 
 if (typeof Highcharts === "object") {
   addHighchartsMore(Highcharts)
 }
 
 const keyify = (key: string, name: string) => `${key}-${name}`.replace(" ", "-").toLowerCase()
+
+const logarithmics = [
+  10,
+  15,
+  20,
+  30,
+  40,
+  60,
+  80,
+  100,
+  150,
+  200,
+  300,
+  400,
+  600,
+  800,
+  1000,
+  1500,
+  2000,
+  3000,
+  4000,
+  6000,
+  8000,
+]
 
 type AnalysisSeriesProps = {
   id: string
@@ -31,6 +62,8 @@ const AnalysisSeries = (props: AnalysisSeriesProps) => {
   const [preanalyzedMode] = usePreanalyzedMode()
   const [webWorkerMode] = useWebWorkerMode()
   const [stopwatchMode] = useStopwatchMode()
+  const [dataSetSize] = useDataSetSize()
+  const sizes = logarithmics.filter((x) => x <= dataSetSize)
 
   useEffect(() => {
     // @todo this hack is definitely NSFW; actually I should rewrite this whole part
@@ -39,7 +72,7 @@ const AnalysisSeries = (props: AnalysisSeriesProps) => {
         let data = preanalyzed(props.id)
         if (preanalyzedMode !== PreanalyzedMode.Enabled || !data) {
           const stopwatch = new Stopwatch("Analyzer")
-          data = await analyzer(props.algorithms, props.dataSets, props.sizes, props.scatter, webWorkerMode)
+          data = await analyzer(props.algorithms, props.dataSets, props.sizes || sizes, props.scatter, webWorkerMode)
           if (stopwatchMode === StopwatchMode.Analyzer) {
             stopwatch.stop()
           }

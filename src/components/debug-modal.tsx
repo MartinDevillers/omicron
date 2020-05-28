@@ -9,6 +9,8 @@ import {
   useWebWorkerMode,
   useStopwatchMode,
   StopwatchMode,
+  useDataSetSize,
+  DataSetSize,
 } from "../settings"
 
 type DebugModalProps = {
@@ -19,6 +21,7 @@ export default ({ onClose }: DebugModalProps) => {
   const [preanalyzedMode, setPreanalyzedMode] = usePreanalyzedMode()
   const [webWorkerMode, setWebWorkerMode] = useWebWorkerMode()
   const [stopwatchMode, setStopwatchMode] = useStopwatchMode()
+  const [dataSetSize, setDataSetSize] = useDataSetSize()
 
   const changePreanalyzedMode = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value as PreanalyzedMode
@@ -33,6 +36,11 @@ export default ({ onClose }: DebugModalProps) => {
   const changeStopwatchMode = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value as StopwatchMode
     setStopwatchMode(value)
+  }
+
+  const changeDataSetSize = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = +event.target.value
+    setDataSetSize(value)
   }
 
   const styles = {
@@ -143,6 +151,36 @@ export default ({ onClose }: DebugModalProps) => {
             onChange={changeStopwatchMode}
           />{" "}
           Algorithm
+        </Label>
+      </Flex>
+      <Label htmlFor="data-set-size">Data set size</Label>
+      <Flex mb={3}>
+        <Label>
+          <Radio
+            name="data-set-size"
+            value={DataSetSize.Small}
+            defaultChecked={dataSetSize === DataSetSize.Small}
+            onChange={changeDataSetSize}
+          />{" "}
+          Small
+        </Label>
+        <Label>
+          <Radio
+            name="data-set-size"
+            value={DataSetSize.Medium}
+            defaultChecked={dataSetSize === DataSetSize.Medium}
+            onChange={changeDataSetSize}
+          />{" "}
+          Medium
+        </Label>
+        <Label>
+          <Radio
+            name="data-set-size"
+            value={DataSetSize.Large}
+            defaultChecked={dataSetSize === DataSetSize.Large}
+            onChange={changeDataSetSize}
+          />{" "}
+          Large
         </Label>
       </Flex>
     </Box>

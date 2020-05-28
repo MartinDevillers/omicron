@@ -46,8 +46,15 @@ export enum StopwatchMode {
   Algorithm = "algorithm",
 }
 
+export enum DataSetSize {
+  Small = 100,
+  Medium = 1000,
+  Large = 10000,
+}
+
 export const usePreanalyzedMode = () =>
   useLocalStorageBackedEnum("preanalyzed-mode", PreanalyzedMode, PreanalyzedMode.Enabled)
 export const useWebWorkerMode = () =>
   useLocalStorageBackedEnum("web-worker-mode", WebWorkerMode, WebWorkerMode.Disabled)
 export const useStopwatchMode = () => useLocalStorageBackedEnum("stopwatch-mode", StopwatchMode, StopwatchMode.None)
+export const useDataSetSize = () => useLocalStorageBackedEnum("data-set-size", DataSetSize, DataSetSize.Large)

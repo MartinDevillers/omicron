@@ -4,10 +4,12 @@ import React from "react"
 import { useMediaQuery } from "react-responsive"
 import { Complexities } from "../complexities"
 import getColorForComplexity from "../util/get-color-for-complexity"
+import { useDataSetSize } from "../settings"
 
 const ComplexitySeries = () => {
   const { theme } = useThemeUI()
   const isDesktop = useMediaQuery({ minDeviceWidth: theme.breakpoints?.[0] as string })
+  const [dataSetSize] = useDataSetSize()
   const plotOptions = {
     lineWidth: 0,
     marker: {
@@ -31,7 +33,7 @@ const ComplexitySeries = () => {
       x: isDesktop ? 0 : 5,
     },
   }
-  const xPoints = Array.from({ length: 42 }, (v, i) => Math.min(10000, 2 ** i / 3))
+  const xPoints = Array.from({ length: 42 }, (v, i) => Math.min(dataSetSize, 2 ** i / 3))
   const complexitySeries = Complexities.common.map((r) => (
     <AreaSeries
       key={r.name}

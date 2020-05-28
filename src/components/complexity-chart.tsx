@@ -16,6 +16,7 @@ import {
 } from "react-jsx-highcharts"
 import applyExporting from "highcharts/modules/exporting"
 import darkTheme from "../dark-theme"
+import { useDataSetSize } from "../settings"
 
 if (typeof Highcharts === "object") {
   applyExporting(Highcharts)
@@ -44,6 +45,8 @@ const ComplexityChart = ({ title, children }: ComplexityChartProps) => {
   const chartSpacing = isDesktop ? [10, 10, 15, 10] : [10, 5, 15, 5]
   const [colorMode] = useColorMode()
   const isDark = colorMode === `dark`
+  const [xAxisMax] = useDataSetSize()
+  const yAxisMax = xAxisMax ** 2
 
   const setTheme = (chart: Highcharts.Chart) => {
     if (isDark) {
@@ -67,10 +70,10 @@ const ComplexityChart = ({ title, children }: ComplexityChartProps) => {
       <Loading>Running analysis...</Loading>
       <Legend />
       <Tooltip />
-      <XAxis type="logarithmic" min={10} max={10000}>
+      <XAxis type="logarithmic" min={10} max={xAxisMax}>
         <XAxis.Title>Elements (n)</XAxis.Title>
       </XAxis>
-      <YAxis type="logarithmic" min={10} max={100000000} labels={yAxisLabels}>
+      <YAxis type="logarithmic" min={10} max={yAxisMax} labels={yAxisLabels}>
         {isDesktop && <YAxis.Title>Operations (O)</YAxis.Title>}
         {children}
       </YAxis>

@@ -13,34 +13,10 @@ export interface Analysis {
   readonly expectedOperationsWorst: number
 }
 
-const logarithmics = [
-  10,
-  15,
-  20,
-  30,
-  40,
-  60,
-  80,
-  100,
-  150,
-  200,
-  300,
-  400,
-  600,
-  800,
-  1000,
-  1500,
-  2000,
-  3000,
-  4000,
-  6000,
-  8000,
-]
-
 export async function analyze(
   algorithms: Algorithm[],
   dataSets: DataSet[],
-  sizes: number[] = logarithmics,
+  sizes: number[],
   scatter = false,
   workerizeFrom = 0
 ): Promise<Analysis[]> {
@@ -51,7 +27,9 @@ export async function analyze(
       const actualSize = array.length
       for (const algorithm of algorithms) {
         const shouldWorkerize = algorithm.timeComplexityWorst.calculate(array.length) >= workerizeFrom
-        const executeAndCount = shouldWorkerize ? workerizeExecuteAndCount(algorithm) : algorithm.executeAndCount.bind(algorithm)
+        const executeAndCount = shouldWorkerize
+          ? workerizeExecuteAndCount(algorithm)
+          : algorithm.executeAndCount.bind(algorithm)
         const analysis = executeAndCount(Array.from(array)).then((operations) => ({
           name: algorithms.length === 1 ? dataSet.name : algorithm.name,
           algorithm: algorithm.name,
