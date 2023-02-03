@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://omi.cr">
-    <img alt="Big O(micron) Visualizer" width="80" src="https://omi.cr/logo.png" />
+  <a href="https://omicron.devillers.nl">
+    <img alt="Big O(micron) Visualizer" width="80" src="https://omicron.devillers.nl/logo.png" />
   </a>
 </p>
 <h1 align="center">
@@ -15,7 +15,7 @@
 
 An interactive web-based tool that visualizes the time complexity of algorithms by running them against various data sets, counting the operations and plotting the results in a chart.
 
-[**See it in action!**](https://omi.cr)
+[**See it in action!**](https://omicron.devillers.nl)
 
 ## ✨ Features
 

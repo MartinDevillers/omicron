@@ -12,7 +12,7 @@ module.exports = {
     // Can be used for e.g. JSONLD
     siteHeadline: `Big O Visualizer by Martin Devillers`,
     // Will be used to generate absolute URLs for og:image etc.
-    siteUrl: `https://omi.cr`,
+    siteUrl: `https://omicron.devillers.nl`,
     // Used for SEO
     siteDescription: `Visualize the time complexity of algorithms.`,
     // Will be set on the <html /> tag
